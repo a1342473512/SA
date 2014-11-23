@@ -555,17 +555,14 @@ namespace SAwareness
                 Menu.GankTracker.MenuItems.Add(
                     Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerActive", "鎵撳紑").SetValue(false)));
                 Menu.GankDetector.Menu =
-                    Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Gank鎺㈡祴", "SAwarenessGankDetector"));
-					Menu.GankDetector.MenuItems.Add( 
- 			                    Menu.GankDetector.Menu.AddItem( 
- 		                       new MenuItem("SAwarenessGankDetectorPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0)))); 
+                     Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("GankDetector", "SAwarenessGankDetector"));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0))));
+                        new MenuItem("SAwarenessGankDetectorPingTimes", "Ping Times").SetValue(new Slider(0, 5, 0))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorPingType", "Ping绫诲瀷").SetValue(true)));
-						new StringList(new[] { "姝ｅ父", "鍗遍櫓", "MISS", "鍦ㄨ矾涓妡", "鎾ら€€", "鍗忓姪" }); 
+                        new MenuItem("SAwarenessGankDetectorPingType", "Ping Type").SetValue(
+                            new StringList(new[] { "Normal", "Danger", "EnemyMissing", "OnMyWay", "Fallback", "AssistMe" }))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorLocalPing", "鏈湴Ping").SetValue(true)));
@@ -575,7 +572,7 @@ namespace SAwareness
                         new MenuItem("SAwarenessGankDetectorTrackRangeMin", "鑼冨洿").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorTrackRange", "杩借釜鑼冨洿").SetValue(new Slider(1, 10000, 1))));
+                        new MenuItem("SAwarenessGankDetectorTrackRangemax", "杩借釜鑼冨洿").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorShowJungler", "鏄剧ず鎵撻噹").SetValue(false)));
                 Menu.GankDetector.MenuItems.Add(
