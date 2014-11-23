@@ -109,7 +109,7 @@ namespace SAwareness
         public static MenuItemSettings FowWardPlacement = new MenuItemSettings(typeof(FowWardPlacement));
         public static MenuItemSettings GlobalSettings = new MenuItemSettings();
 		public static MenuItemSettings TranScreeder = new MenuItemSettings();
-                
+        public static MenuItemSettings RealTime = new MenuItemSettings(typeof(RealTime));         
 		
         public class MenuItemSettings
         {
@@ -384,8 +384,7 @@ namespace SAwareness
                 Menu.Range.MenuItems.Add(
                     Menu.Range.Menu.AddItem(new MenuItem("SAwarenessRangesActive", "鎵撳紑").SetValue(false)));
                
-                //Not crashing
-                                         
+                //Not crashing                 
                  Menu.Tracker.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-杩借釜", "SAwarenessTracker"));
                 Menu.WaypointTracker.Menu =
                     Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璺緞杩借釜",
@@ -557,20 +556,23 @@ namespace SAwareness
                     Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerActive", "鎵撳紑").SetValue(false)));
                 Menu.GankDetector.Menu =
                     Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Gank鎺㈡祴", "SAwarenessGankDetector"));
+					Menu.GankDetector.MenuItems.Add( 
+ 			                    Menu.GankDetector.Menu.AddItem( 
+ 		                       new MenuItem("SAwarenessGankDetectorPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0)))); 
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorPingType", "Ping绫诲瀷").SetValue(
-                            new StringList(new[] { "姝ｅ父", "鍗遍櫓", "MISS", "鍦ㄨ矾涓妡", "鎾ら€€", "鍗忓姪" }))));
+                        new MenuItem("SAwarenessGankDetectorPingType", "Ping绫诲瀷").SetValue(true)));
+						new StringList(new[] { "姝ｅ父", "鍗遍櫓", "MISS", "鍦ㄨ矾涓妡", "鎾ら€€", "鍗忓姪" }); 
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorLocalPing", "鏈湴Ping").SetValue(true)));
+						new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }); 
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessGankDetectorTrackRangeMin", "鑼冨洿").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorTrackRange", "杩借釜鑼冨洿").SetValue(new Slider(1, 10000, 1))));
@@ -1093,6 +1095,8 @@ namespace SAwareness
                         new MenuItem("SAwarenessAutoPotManaPotPercent", "%").SetValue(new Slider(20, 99, 0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "鎵撳紑").SetValue(false)));
+					Menu.AutoPot.MenuItems.Add( 
+ 		                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotOverusage", "闃叉閲嶅浣跨敤").SetValue(false))); 
                 Menu.AutoPot.MenuItems.Add(
                     Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotActive", "鎵撳紑").SetValue(false)));
                 Menu.ActivatorAutoHeal.Menu =
@@ -1294,7 +1298,10 @@ namespace SAwareness
                     Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐪间綅鎺ㄨ崘", "SAwarenessFowWardPlacement"));
                 Menu.FowWardPlacement.MenuItems.Add(
                     Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "鎵撳紑").SetValue(false)));
-
+				Menu.RealTime.Menu = 
+ 		                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Real Time", "SAwarenessRealTime")); 
+ 			                Menu.RealTime.MenuItems.Add( 
+ 		                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "鎵撳紑").SetValue(false))); 
                 Menu.GlobalSettings.Menu =
                     menu.AddSubMenu(new LeagueSharp.Common.Menu("鍏ㄥ眬璁剧疆", "SAwarenessGlobalSettings"));
                 Menu.GlobalSettings.MenuItems.Add(
