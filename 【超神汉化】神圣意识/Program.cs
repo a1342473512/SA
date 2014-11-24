@@ -1075,11 +1075,11 @@ namespace SAwareness
                         Menu.AutoShieldBlockableSpells.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockableSpells" + spell, spell).SetValue(false)));
                 }
                 Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldAlly", "Shield Ally").SetValue(false)));
+                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldAlly", "闃熷弸鎶ょ浘").SetValue(false)));
                 Menu.AutoShield.MenuItems.Add(
                     Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldActive", "鎵撳紑").SetValue(false)));
                 Menu.AutoPot.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoPot", "SAwarenessAutoPot"));
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鑽按", "SAwarenessAutoPot"));
                 tempSettings = Menu.AutoPot.AddMenuItemSettings("HealthPot",
                     "SAwarenessAutoPotHealthPot");
                 tempSettings.MenuItems.Add(
@@ -1096,18 +1096,18 @@ namespace SAwareness
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "鎵撳紑").SetValue(false)));
                 Menu.AutoPot.MenuItems.Add(
-                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotOverusage", "Prevent Overusage").SetValue(false)));
+                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotOverusage", "闃叉閲嶅浣跨敤").SetValue(false)));
                 Menu.AutoPot.MenuItems.Add(
                     Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotActive", "鎵撳紑").SetValue(false)));
                 Menu.ActivatorAutoHeal.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoHeal | Beta",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩娌荤枟",
                         "SAwarenessActivatorAutoHeal"));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
-                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "Percent").SetValue(new Slider(20, 99, 0))));
+                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "%").SetValue(new Slider(20, 99, 0))));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
                     Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealActive", "鎵撳紑").SetValue(false)));
                 Menu.ActivatorAutoUlt.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoUlt | Beta",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩澶ф嫑",
                         "SAwarenessActivatorAutoUlt"));
                 Menu.ActivatorAutoUlt.MenuItems.Add(
                     Menu.ActivatorAutoUlt.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoUltAlly", "闃熷弸").SetValue(false)));
