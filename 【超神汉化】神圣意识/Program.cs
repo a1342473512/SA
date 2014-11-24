@@ -598,7 +598,7 @@ namespace SAwareness
                         new MenuItem("SAwarenessInhibitorHealthActive", "鎵撳紑").SetValue(false)));
                 Menu.Health.MenuItems.Add(
                     Menu.Health.Menu.AddItem(
-                        new MenuItem("SAwarenessHealthMode", "妯″紡").SetValue(new StringList(new[] { "%", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessHealthMode", "妯″紡").SetValue(new StringList(new[] { "Percent", "姝ｅ父" }))));
                 Menu.Health.MenuItems.Add(
                     Menu.Health.Menu.AddItem(new MenuItem("SAwarenessHealthActive", "鎵撳紑").SetValue(false)));
                 
@@ -655,7 +655,7 @@ namespace SAwareness
                         "SAwarenessActivatorAutoSummonerSpellHeal"));
                 Menu.ActivatorAutoSummonerSpellHeal.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellHeal.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealPercent", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealPercent", "Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellHeal.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellHeal.Menu.AddItem(
@@ -668,7 +668,7 @@ namespace SAwareness
                         "SAwarenessActivatorAutoSummonerSpellBarrier"));
                 Menu.ActivatorAutoSummonerSpellBarrier.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellBarrier.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierPercent", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierPercent", "Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellBarrier.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellBarrier.Menu.AddItem(
@@ -958,7 +958,7 @@ namespace SAwareness
                             false)));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostConfigHealth", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostConfigHealth", "Health Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
@@ -1103,7 +1103,7 @@ namespace SAwareness
                     Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩娌荤枟",
                         "SAwarenessActivatorAutoHeal"));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
-                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "%").SetValue(new Slider(20, 99, 0))));
+                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "Percent").SetValue(new Slider(20, 99, 0))));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
                     Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealActive", "鎵撳紑").SetValue(false)));
                 Menu.ActivatorAutoUlt.Menu =
