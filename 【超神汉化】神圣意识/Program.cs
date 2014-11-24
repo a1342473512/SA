@@ -1305,11 +1305,6 @@ namespace SAwareness
                         new MenuItem("SAwarenessGlobalSettingsServerChatPingActive", "姝ｅ父鑱婂ぉ/姝ｅ父Ping").SetValue(false)));
                 
                 menu.AddItem(new MenuItem("By Screeder", "By Screeder V0.85"));
-				Menu.TranScreeder.Menu =
-                    menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲", "SAwarenessTranScreeder"));
-                Menu.TranScreeder.MenuItems.Add(
-                    Menu.TranScreeder.Menu.AddItem(
-                        new MenuItem("SAwarenessTranScreederQ", "L#姹夊寲缇わ細386289593")));
                 menu.AddToMainMenu();
             }
             catch (Exception)
@@ -1334,11 +1329,6 @@ namespace SAwareness
             {
                 Console.WriteLine("SAwareness: " + e);
             }
-        }
-        public static void PrintMessage(string msg) // Credits to ChewyMoon, and his Brain.exe
-        {
-            Game.PrintChat("<font color=\"#FFFF00\"><b>瓒呯姹夊寲-</b></font> <font color=\"#FF0033\">" + msg + "</font>");
-			Game.PrintChat("<font color=\"#00FFFF\"><b>L#姹夊寲缇わ細386289593</b></font>");
         }
 
         private static bool threadActive = true;
