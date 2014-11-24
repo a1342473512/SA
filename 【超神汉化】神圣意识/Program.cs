@@ -1318,7 +1318,7 @@ namespace SAwareness
             try
             {
                 CreateMenu();
-                PrintMessage("绁炲湥鎰忚瘑 鍔犺浇鎴愬姛");
+              Game.PrintChat("SAwareness loaded!");
                 //Game.OnGameUpdate += GameOnOnGameUpdate;
                 new Thread(GameOnOnGameUpdate).Start();
                 AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
