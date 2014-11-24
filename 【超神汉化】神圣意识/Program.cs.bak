@@ -1084,7 +1084,7 @@ namespace SAwareness
                     "SAwarenessAutoPotHealthPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoPotHealthPotPercent", "Health Percent").SetValue(new Slider(20, 99,
+                        new MenuItem("SAwarenessAutoPotHealthPotPercent", "%").SetValue(new Slider(20, 99,
                             0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotHealthPotActive", "鎵撳紑").SetValue(false)));
@@ -1092,7 +1092,7 @@ namespace SAwareness
                     "SAwarenessAutoPotManaPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoPotManaPotPercent", "Mana Percent").SetValue(new Slider(20, 99, 0))));
+                        new MenuItem("SAwarenessAutoPotManaPotPercent", "%").SetValue(new Slider(20, 99, 0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "鎵撳紑").SetValue(false)));
                 Menu.AutoPot.MenuItems.Add(
