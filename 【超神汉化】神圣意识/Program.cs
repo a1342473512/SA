@@ -863,7 +863,7 @@ namespace SAwareness
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
                         new MenuItem("SAwarenessActivatorDefensiveCleanseConfigPoison", "涓瘨").SetValue(false)));
-                //Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorDefensiveCleanseConfigActive", "Active").SetValue(false)));
+                //Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorDefensiveCleanseConfigActive", "鎵撳紑").SetValue(false)));
 
                 Menu.ActivatorDefensiveSelfShield.Menu =
                     Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu(
@@ -1015,7 +1015,7 @@ namespace SAwareness
                 ////Menu.ActivatorOffensiveAd.MenuItems.Add(Menu.ActivatorOffensiveAd.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorOffensiveAdMuramana", "Muramana").SetValue(false)));
                 //Menu.ActivatorOffensiveAd.MenuItems.Add(
                 //    Menu.ActivatorOffensiveAd.Menu.AddItem(
-                //        new MenuItem("SAwarenessActivatorOffensiveAdActive", "Active").SetValue(false)));
+                //        new MenuItem("SAwarenessActivatorOffensiveAdActive", "鎵撳紑").SetValue(false)));
 
                 //Menu.ActivatorOffensiveAp.Menu =
                 //    Menu.ActivatorOffensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AP",
@@ -1039,14 +1039,14 @@ namespace SAwareness
                 ////Menu.ActivatorOffensiveAp.MenuItems.Add(Menu.ActivatorOffensiveAp.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorOffensiveApOdynsVeil", "Odyn's Veil").SetValue(false)));
                 //Menu.ActivatorOffensiveAp.MenuItems.Add(
                 //    Menu.ActivatorOffensiveAp.Menu.AddItem(
-                //        new MenuItem("SAwarenessActivatorOffensiveApActive", "Active").SetValue(false)));
+                //        new MenuItem("SAwarenessActivatorOffensiveApActive", "鎵撳紑").SetValue(false)));
                 //Menu.ActivatorOffensive.MenuItems.Add(
                 //    Menu.ActivatorOffensive.Menu.AddItem(
                 //        new MenuItem("SAwarenessActivatorOffensiveKey", "Key").SetValue(new KeyBind(32,
                 //            KeyBindType.Press))));
                 //Menu.ActivatorOffensive.MenuItems.Add(
                 //    Menu.ActivatorOffensive.Menu.AddItem(
-                //        new MenuItem("SAwarenessActivatorOffensiveActive", "Active").SetValue(false)));
+                //        new MenuItem("SAwarenessActivatorOffensiveActive", "鎵撳紑").SetValue(false)));
 
                 Menu.AutoShield.Menu =
                     Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鎶ょ浘",
@@ -1279,7 +1279,7 @@ namespace SAwareness
                 //Menu.MinionLocation.Menu =
                 //    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Minion Location", "SAwarenessMinionLocation"));
                 //Menu.MinionLocation.MenuItems.Add(
-                //    Menu.MinionLocation.Menu.AddItem(new MenuItem("SAwarenessMinionLocationActive", "Active").SetValue(false)));
+                //    Menu.MinionLocation.Menu.AddItem(new MenuItem("SAwarenessMinionLocationActive", "鎵撳紑").SetValue(false)));
                 Menu.FlashJuke.Menu =
                     Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("闂幇娆洪獥", "SAwarenessFlashJuke"));
                 Menu.FlashJuke.MenuItems.Add(
@@ -1295,11 +1295,11 @@ namespace SAwareness
                 Menu.FowWardPlacement.Menu =
                     Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐪间綅鎺ㄨ崘", "SAwarenessFowWardPlacement"));
                 Menu.FowWardPlacement.MenuItems.Add(
-                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "Active").SetValue(false)));
+                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "鎵撳紑").SetValue(false)));
                 Menu.RealTime.Menu =
                     Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Real Time", "SAwarenessRealTime"));
                 Menu.RealTime.MenuItems.Add(
-                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "Active").SetValue(false)));
+                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "鎵撳紑").SetValue(false)));
 
                 Menu.GlobalSettings.Menu =
                     menu.AddSubMenu(new LeagueSharp.Common.Menu("鍏ㄥ眬璁剧疆", "SAwarenessGlobalSettings"));
