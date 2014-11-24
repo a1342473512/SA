@@ -107,10 +107,10 @@ namespace SAwareness
         public static MenuItemSettings Killable = new MenuItemSettings(typeof (Killable));
         public static MenuItemSettings EasyRangedJungle = new MenuItemSettings(typeof(EasyRangedJungle));
         public static MenuItemSettings FowWardPlacement = new MenuItemSettings(typeof(FowWardPlacement));
+        public static MenuItemSettings RealTime = new MenuItemSettings(typeof(RealTime));
+
         public static MenuItemSettings GlobalSettings = new MenuItemSettings();
-		public static MenuItemSettings TranScreeder = new MenuItemSettings();
-                
-		
+
         public class MenuItemSettings
         {
             public bool ForceDisable;
@@ -575,7 +575,10 @@ namespace SAwareness
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorTrackRange", "杩借釜鑼冨洿").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
-                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorShowJungler", "鏄剧ず鎵撻噹").SetValue(false)));
+                    Menu.GankDetector.Menu.AddItem(
+                        new MenuItem("SAwarenessGankDetectorTrackRangeMax", "Track Range Max").SetValue(new Slider(1, 10000, 1))));
+                Menu.GankDetector.MenuItems.Add(
+                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorShowJungler", "Show Jungler").SetValue(false)));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorActive", "鎵撳紑").SetValue(false)));
                 Menu.Ganks.MenuItems.Add(
