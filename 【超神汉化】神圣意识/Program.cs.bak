@@ -1080,7 +1080,7 @@ namespace SAwareness
                     Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldActive", "鎵撳紑").SetValue(false)));
                 Menu.AutoPot.Menu =
                     Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鑽按", "SAwarenessAutoPot"));
-                tempSettings = Menu.AutoPot.AddMenuItemSettings("HealthPot",
+                tempSettings = Menu.AutoPot.AddMenuItemSettings("绾㈣嵂",
                     "SAwarenessAutoPotHealthPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
@@ -1092,7 +1092,7 @@ namespace SAwareness
                     "SAwarenessAutoPotManaPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoPotManaPotPercent", "Mana Percent").SetValue(new Slider(20, 99, 0))));
+                        new MenuItem("SAwarenessAutoPotManaPotPercent", "%").SetValue(new Slider(20, 99, 0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "鎵撳紑").SetValue(false)));
                 Menu.AutoPot.MenuItems.Add(
