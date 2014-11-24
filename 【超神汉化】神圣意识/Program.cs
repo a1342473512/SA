@@ -1309,11 +1309,9 @@ namespace SAwareness
                         new MenuItem("SAwarenessGlobalSettingsServerChatPingActive", "姝ｅ父鑱婂ぉ/姝ｅ父Ping").SetValue(false)));
                 
                 menu.AddItem(new MenuItem("By Screeder", "By Screeder V0.85"));
-				Menu.TranScreeder.Menu =
+				
                     menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲", "SAwarenessTranScreeder"));
-                Menu.TranScreeder.MenuItems.Add(
-                    Menu.TranScreeder.Menu.AddItem(
-                        new MenuItem("SAwarenessTranScreederQ", "L#姹夊寲缇わ細386289593")));
+                     new MenuItem("SAwarenessTranScreederQ", "L#姹夊寲缇わ細386289593")));
                 menu.AddToMainMenu();
             }
             catch (Exception)
