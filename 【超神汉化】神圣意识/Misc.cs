@@ -531,7 +531,7 @@ namespace SAwareness
         {
             if (!IsActive())
                 return;
-				
+
             Utility.DrawCircle(new Vector3(7600f, 3140f, 60f), 50, System.Drawing.Color.Fuchsia);
             Utility.DrawCircle(new Vector3(7160, 4600f, 60f), 50, System.Drawing.Color.Fuchsia);
             Utility.DrawCircle(new Vector3(4570f, 6170f, 60f), 50, System.Drawing.Color.Fuchsia);
@@ -694,7 +694,7 @@ namespace SAwareness
                 }
             }
             return wards;
-			}
+        }
     }
 
     internal class RealTime

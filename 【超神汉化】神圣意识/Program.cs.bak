@@ -164,7 +164,7 @@ namespace SAwareness
                     return false;
                 foreach (MenuItem item in Menu.Items)
                 {
-                    if (item.DisplayName == "鎵撳紑")
+                    if (item.DisplayName == "Active")
                     {
                         if (item.GetValue<bool>())
                         {
@@ -182,7 +182,7 @@ namespace SAwareness
                     return;
                 foreach (MenuItem item in Menu.Items)
                 {
-                    if (item.DisplayName == "鎵撳紑")
+                    if (item.DisplayName == "Active")
                     {
                         item.SetValue(active);
                         return;
@@ -250,312 +250,312 @@ namespace SAwareness
             try
             {
                 Menu.MenuItemSettings tempSettings;
-                var menu = new LeagueSharp.Common.Menu("绁炲湥鎰忚瘑", "SAwareness", true);
+                var menu = new LeagueSharp.Common.Menu("SAwareness", "SAwareness", true);
 
                 //Not crashing
-                Menu.Timers.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-璁℃椂", "SAwarenessTimers"));
+                Menu.Timers.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Timers", "SAwarenessTimers"));
                 Menu.Timers.MenuItems.Add(
                     Menu.Timers.Menu.AddItem(
-                        new MenuItem("SAwarenessTimersPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0))));
+                        new MenuItem("SAwarenessTimersPingTimes", "Ping Times").SetValue(new Slider(0, 5, 0))));
                 Menu.Timers.MenuItems.Add(
                     Menu.Timers.Menu.AddItem(
-                        new MenuItem("SAwarenessTimersRemindTime", "鎻愰啋鏃堕棿").SetValue(new Slider(0, 50, 0))));
+                        new MenuItem("SAwarenessTimersRemindTime", "Remind Time").SetValue(new Slider(0, 50, 0))));
                 Menu.Timers.MenuItems.Add(
-                    Menu.Timers.Menu.AddItem(new MenuItem("SAwarenessTimersLocalPing", "鏈湴Ping").SetValue(true)));
+                    Menu.Timers.Menu.AddItem(new MenuItem("SAwarenessTimersLocalPing", "Local Ping").SetValue(true)));
                 Menu.Timers.MenuItems.Add(
                     Menu.Timers.Menu.AddItem(
-                        new MenuItem("SAwarenessTimersChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessTimersChatChoice", "Chat Choice").SetValue(
+                            new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.JungleTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("閲庡尯璁℃椂", "SAwarenessJungleTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("JungleTimer", "SAwarenessJungleTimer"));
                 Menu.JungleTimer.MenuItems.Add(
-                    Menu.JungleTimer.Menu.AddItem(new MenuItem("SAwarenessJungleTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.JungleTimer.Menu.AddItem(new MenuItem("SAwarenessJungleTimersActive", "Active").SetValue(false)));
                 Menu.RelictTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍙潃璁℃椂", "SAwarenessRelictTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("RelictTimer", "SAwarenessRelictTimer"));
                 Menu.RelictTimer.MenuItems.Add(
-                    Menu.RelictTimer.Menu.AddItem(new MenuItem("SAwarenessRelictTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.RelictTimer.Menu.AddItem(new MenuItem("SAwarenessRelictTimersActive", "Active").SetValue(false)));
                 Menu.HealthTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐢熷懡璁℃椂", "SAwarenessHealthTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("HealthTimer", "SAwarenessHealthTimer"));
                 Menu.HealthTimer.MenuItems.Add(
-                    Menu.HealthTimer.Menu.AddItem(new MenuItem("SAwarenessHealthTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.HealthTimer.Menu.AddItem(new MenuItem("SAwarenessHealthTimersActive", "Active").SetValue(false)));
                 Menu.InhibitorTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("姘存櫠璁℃椂", "SAwarenessInhibitorTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("InhibitorTimer", "SAwarenessInhibitorTimer"));
                 Menu.InhibitorTimer.MenuItems.Add(
                     Menu.InhibitorTimer.Menu.AddItem(
-                        new MenuItem("SAwarenessInhibitorTimersActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessInhibitorTimersActive", "Active").SetValue(false)));
                 Menu.AltarTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍦ｅ潧璁℃椂", "SAwarenessAltarTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AltarTimer", "SAwarenessAltarTimer"));
                 Menu.AltarTimer.MenuItems.Add(
-                    Menu.AltarTimer.Menu.AddItem(new MenuItem("SAwarenessAltarTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.AltarTimer.Menu.AddItem(new MenuItem("SAwarenessAltarTimersActive", "Active").SetValue(false)));
                 Menu.ImmuneTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍏嶇柅璁℃椂", "SAwarenessImmuneTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("ImmuneTimer", "SAwarenessImmuneTimer"));
                 Menu.ImmuneTimer.MenuItems.Add(
-                    Menu.ImmuneTimer.Menu.AddItem(new MenuItem("SAwarenessImmuneTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.ImmuneTimer.Menu.AddItem(new MenuItem("SAwarenessImmuneTimersActive", "Active").SetValue(false)));
                 Menu.SummonerTimer.Menu =
-                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍙敜璁℃椂", "SAwarenessSummonerTimer"));
+                    Menu.Timers.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SummonerTimer", "SAwarenessSummonerTimer"));
                 Menu.SummonerTimer.MenuItems.Add(
-                    Menu.SummonerTimer.Menu.AddItem(new MenuItem("SAwarenessSummonerTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.SummonerTimer.Menu.AddItem(new MenuItem("SAwarenessSummonerTimersActive", "Active").SetValue(false)));
                 Menu.Timers.MenuItems.Add(
-                    Menu.Timers.Menu.AddItem(new MenuItem("SAwarenessTimersActive", "鎵撳紑").SetValue(false)));
+                    Menu.Timers.Menu.AddItem(new MenuItem("SAwarenessTimersActive", "Active").SetValue(false)));
 
-                //Not crashing     
-                Menu.Range.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-鑼冨洿", "SAwarenessRanges"));
+                //Not crashing
+                Menu.Range.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Ranges", "SAwarenessRanges"));
                 Menu.ShopRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍟嗗簵鑼冨洿",
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("ShopRange",
                         "SAwarenessShopRange"));
                 Menu.ShopRange.MenuItems.Add(
                     Menu.ShopRange.Menu.AddItem(
-                        new MenuItem("SAwarenessShopRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessShopRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.ShopRange.MenuItems.Add(
                     Menu.ShopRange.Menu.AddItem(
-                        new MenuItem("SAwarenessShopRangeActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessShopRangeActive", "Active").SetValue(false)));
                 Menu.VisionRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("瑙嗛噹鑼冨洿",
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("VisionRange",
                         "SAwarenessVisionRange"));
                 Menu.VisionRange.MenuItems.Add(
                     Menu.VisionRange.Menu.AddItem(
-                        new MenuItem("SAwarenessVisionRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessVisionRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.VisionRange.MenuItems.Add(
                     Menu.VisionRange.Menu.AddItem(
-                        new MenuItem("SAwarenessVisionRangeActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessVisionRangeActive", "Active").SetValue(false)));
                 Menu.ExperienceRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("缁忛獙鑼冨洿",
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("ExperienceRange",
                         "SAwarenessExperienceRange"));
                 Menu.ExperienceRange.MenuItems.Add(
                     Menu.ExperienceRange.Menu.AddItem(
-                        new MenuItem("SAwarenessExperienceRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessExperienceRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.ExperienceRange.MenuItems.Add(
                     Menu.ExperienceRange.Menu.AddItem(
-                        new MenuItem("SAwarenessExperienceRangeActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessExperienceRangeActive", "Active").SetValue(false)));
                 Menu.AttackRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏀诲嚮鑼冨洿", "SAwarenessAttackRange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AttackRange", "SAwarenessAttackRange"));
                 Menu.AttackRange.MenuItems.Add(
                     Menu.AttackRange.Menu.AddItem(
-                        new MenuItem("SAwarenessAttackRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessAttackRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.AttackRange.MenuItems.Add(
-                    Menu.AttackRange.Menu.AddItem(new MenuItem("SAwarenessAttackRangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.AttackRange.Menu.AddItem(new MenuItem("SAwarenessAttackRangeActive", "Active").SetValue(false)));
                 Menu.TowerRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐐鑼冨洿", "SAwarenessTowerRange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("TowerRange", "SAwarenessTowerRange"));
                 Menu.TowerRange.MenuItems.Add(
                     Menu.TowerRange.Menu.AddItem(
-                        new MenuItem("SAwarenessTowerRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessTowerRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.TowerRange.MenuItems.Add(
-                    Menu.TowerRange.Menu.AddItem(new MenuItem("SAwarenessTowerRangeRange", "鑼冨洿").SetValue(new Slider(2000, 10000,
+                    Menu.TowerRange.Menu.AddItem(new MenuItem("SAwarenessTowerRangeRange", "Range").SetValue(new Slider(2000, 10000,
                             0))));
                 Menu.TowerRange.MenuItems.Add(
-                    Menu.TowerRange.Menu.AddItem(new MenuItem("SAwarenessTowerRangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.TowerRange.Menu.AddItem(new MenuItem("SAwarenessTowerRangeActive", "Active").SetValue(false)));
                 Menu.SpellQRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Q鑼冨洿", "SAwarenessSpellQRange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SpellQRange", "SAwarenessSpellQRange"));
                 Menu.SpellQRange.MenuItems.Add(
                     Menu.SpellQRange.Menu.AddItem(
-                        new MenuItem("SAwarenessSpellQRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessSpellQRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.SpellQRange.MenuItems.Add(
-                    Menu.SpellQRange.Menu.AddItem(new MenuItem("SAwarenessSpellQRangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.SpellQRange.Menu.AddItem(new MenuItem("SAwarenessSpellQRangeActive", "Active").SetValue(false)));
                 Menu.SpellWRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("W鑼冨洿", "SAwarenessSpellWRange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SpellWRange", "SAwarenessSpellWRange"));
                 Menu.SpellWRange.MenuItems.Add(
                     Menu.SpellWRange.Menu.AddItem(
-                        new MenuItem("SAwarenessSpellWRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessSpellWRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.SpellWRange.MenuItems.Add(
-                    Menu.SpellWRange.Menu.AddItem(new MenuItem("SAwarenessSpellWRangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.SpellWRange.Menu.AddItem(new MenuItem("SAwarenessSpellWRangeActive", "Active").SetValue(false)));
                 Menu.SpellERange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("E鑼冨洿", "SAwarenessSpellERange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SpellERange", "SAwarenessSpellERange"));
                 Menu.SpellERange.MenuItems.Add(
                     Menu.SpellERange.Menu.AddItem(
-                        new MenuItem("SAwarenessSpellERangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessSpellERangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.SpellERange.MenuItems.Add(
-                    Menu.SpellERange.Menu.AddItem(new MenuItem("SAwarenessSpellERangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.SpellERange.Menu.AddItem(new MenuItem("SAwarenessSpellERangeActive", "Active").SetValue(false)));
                 Menu.SpellRRange.Menu =
-                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("R鑼冨洿", "SAwarenessSpellRRange"));
+                    Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SpellRRange", "SAwarenessSpellRRange"));
                 Menu.SpellRRange.MenuItems.Add(
                     Menu.SpellRRange.Menu.AddItem(
-                        new MenuItem("SAwarenessSpellRRangeMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑷繁", "鏁屾柟", "鍙屾柟" }))));
+                        new MenuItem("SAwarenessSpellRRangeMode", "Mode").SetValue(
+                            new StringList(new[] { "Me", "Enemy", "Both" }))));
                 Menu.SpellRRange.MenuItems.Add(
-                    Menu.SpellRRange.Menu.AddItem(new MenuItem("SAwarenessSpellRRangeActive", "鎵撳紑").SetValue(false)));
+                    Menu.SpellRRange.Menu.AddItem(new MenuItem("SAwarenessSpellRRangeActive", "Active").SetValue(false)));
                 Menu.Range.MenuItems.Add(
-                    Menu.Range.Menu.AddItem(new MenuItem("SAwarenessRangesActive", "鎵撳紑").SetValue(false)));
-               
-                //Not crashing                 
-                 Menu.Tracker.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-杩借釜", "SAwarenessTracker"));
+                    Menu.Range.Menu.AddItem(new MenuItem("SAwarenessRangesActive", "Active").SetValue(false)));
+
+                //Not crashing
+                Menu.Tracker.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Tracker", "SAwarenessTracker"));
                 Menu.WaypointTracker.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璺緞杩借釜",
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("WaypointTracker",
                         "SAwarenessWaypointTracker"));
                 Menu.WaypointTracker.MenuItems.Add(
                     Menu.WaypointTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessWaypointTrackerActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessWaypointTrackerActive", "Active").SetValue(false)));
                 Menu.DestinationTracker.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("缁堢偣杩借釜",
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("DestinationTracker",
                         "SAwarenessDestinationTracker"));
                 Menu.DestinationTracker.MenuItems.Add(
                     Menu.DestinationTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessDestinationTrackerActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessDestinationTrackerActive", "Active").SetValue(false)));
                 Menu.CloneTracker.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍒嗚韩", "SAwarenessCloneTracker"));
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("CloneTracker", "SAwarenessCloneTracker"));
                 Menu.CloneTracker.MenuItems.Add(
-                    Menu.CloneTracker.Menu.AddItem(new MenuItem("SAwarenessCloneTrackerActive", "鎵撳紑").SetValue(false)));
+                    Menu.CloneTracker.Menu.AddItem(new MenuItem("SAwarenessCloneTrackerActive", "Active").SetValue(false)));
                 Menu.UiTracker.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏄剧ずCD", "SAwarenessUITracker"));
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("UITracker", "SAwarenessUITracker"));
                 Menu.UiTracker.MenuItems.Add(
-                    Menu.UiTracker.Menu.AddItem(new MenuItem("SAwarenessItemPanelActive", "闈㈡澘").SetValue(false)));
+                    Menu.UiTracker.Menu.AddItem(new MenuItem("SAwarenessItemPanelActive", "ItemPanel").SetValue(false)));
                 Menu.UiTracker.MenuItems.Add(
                     Menu.UiTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerScale", "姣斾緥").SetValue(new Slider(100, 100, 0))));
-                tempSettings = Menu.UiTracker.AddMenuItemSettings("鏁屾柟CD",
+                        new MenuItem("SAwarenessUITrackerScale", "Scale").SetValue(new Slider(100, 100, 0))));
+                tempSettings = Menu.UiTracker.AddMenuItemSettings("Enemy Tracker",
                     "SAwarenessUITrackerEnemyTracker");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerXPos", "X鍧愭爣").SetValue(new Slider(-1, 10000,
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerXPos", "X Position").SetValue(new Slider(-1, 10000,
                             0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerYPos", "Y鍧愭爣").SetValue(new Slider(-1, 10000,
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerYPos", "Y Position").SetValue(new Slider(-1, 10000,
                             0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerMode", "妯″紡").SetValue(
-                            new StringList(new[] { "闄勮繎", "鍗曚釜", "鍏ㄩ儴" }))));
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerMode", "Mode").SetValue(
+                            new StringList(new[] { "Side", "Unit", "Both" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerSideDisplayMode", "鏃佽竟鏄剧ず").SetValue(
-                            new StringList(new[] { "榛樿", "绠€鍗曘劎", "鍥綋" }))));
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerSideDisplayMode", "Side Display").SetValue(
+                            new StringList(new[] { "Default", "Simple", "League" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerHeadMode", "姣斾緥").SetValue(
-                            new StringList(new[] { "杈冨皬", "杈冨ぇ" }))));
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerHeadMode", "Head Mode").SetValue(
+                            new StringList(new[] { "Small", "Big" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerHeadDisplayMode", "澶撮《鏄剧ず").SetValue(
-                            new StringList(new[] { "榛樿", "绠€鍗曘劎" }))));
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerHeadDisplayMode", "Head Display").SetValue(
+                            new StringList(new[] { "Default", "Simple" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerEnemyTrackerActive", "鎵撳紑").SetValue(false)));
-                tempSettings = Menu.UiTracker.AddMenuItemSettings("闃熷弸CD",
+                        new MenuItem("SAwarenessUITrackerEnemyTrackerActive", "Active").SetValue(false)));
+                tempSettings = Menu.UiTracker.AddMenuItemSettings("Ally Tracker",
                     "SAwarenessUITrackerAllyTracker");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerXPos", "X鍧愭爣").SetValue(new Slider(-1, 10000,
+                        new MenuItem("SAwarenessUITrackerAllyTrackerXPos", "X Position").SetValue(new Slider(-1, 10000,
                             0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerYPos", "Y鍧愭爣").SetValue(new Slider(-1, 10000,
+                        new MenuItem("SAwarenessUITrackerAllyTrackerYPos", "Y Position").SetValue(new Slider(-1, 10000,
                             0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerMode", "妯″紡").SetValue(
-                            new StringList(new[] { "闄勮繎", "鍗曚釜", "鍏ㄩ儴" }))));
+                        new MenuItem("SAwarenessUITrackerAllyTrackerMode", "Mode").SetValue(
+                            new StringList(new[] { "Side", "Unit", "Both" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerSideDisplayMode", "鏃佽竟鏄剧ず").SetValue(
-                            new StringList(new[] { "榛樿", "绠€鍗曘劎", "鍥㈤槦" }))));
+                        new MenuItem("SAwarenessUITrackerAllyTrackerSideDisplayMode", "Side Display").SetValue(
+                            new StringList(new[] { "Default", "Simple", "League" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerHeadMode", "姣斾緥").SetValue(
-                            new StringList(new[] { "杈冨皬", "杈冨ぇ" }))));
+                        new MenuItem("SAwarenessUITrackerAllyTrackerHeadMode", "Over Head Mode").SetValue(
+                            new StringList(new[] { "Small", "Big" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerHeadDisplayMode", "澶撮《鏄剧ず").SetValue
-                            (new StringList(new[] { "榛樿", "绠€鍗曘劎" }))));
+                        new MenuItem("SAwarenessUITrackerAllyTrackerHeadDisplayMode", "Over Head Display").SetValue
+                            (new StringList(new[] { "Default", "Simple" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerAllyTrackerActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessUITrackerAllyTrackerActive", "Active").SetValue(false)));
                 //Menu.UiTracker.MenuItems.Add(Menu.UiTracker.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessUITrackerCameraMoveActive", "Camera move active").SetValue(false)));
                 Menu.UiTracker.MenuItems.Add(
                     Menu.UiTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessUITrackerPingActive", "Ping鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessUITrackerPingActive", "Ping active").SetValue(false)));
                 Menu.UiTracker.MenuItems.Add(
-                    Menu.UiTracker.Menu.AddItem(new MenuItem("SAwarenessUITrackerActive", "鎵撳紑").SetValue(false)));
+                    Menu.UiTracker.Menu.AddItem(new MenuItem("SAwarenessUITrackerActive", "Active").SetValue(false)));
                 Menu.UimTracker.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("娑堝け浣嶇疆", "SAwarenessUIMTracker"));
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("UIMTracker", "SAwarenessUIMTracker"));
                 Menu.UimTracker.MenuItems.Add(
                     Menu.UimTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessUIMTrackerScale", "姣斾緥").SetValue(new Slider(100, 100, 0))));
+                        new MenuItem("SAwarenessUIMTrackerScale", "Scale").SetValue(new Slider(100, 100, 0))));
                 Menu.UimTracker.MenuItems.Add(
-                    Menu.UimTracker.Menu.AddItem(new MenuItem("SAwarenessUIMTrackerShowSS", "鏁屼汉娑堝け鎻愮ず").SetValue(false)));
+                    Menu.UimTracker.Menu.AddItem(new MenuItem("SAwarenessUIMTrackerShowSS", "SS Time").SetValue(false)));
                 Menu.UimTracker.MenuItems.Add(
-                    Menu.UimTracker.Menu.AddItem(new MenuItem("SAwarenessUIMTrackerActive", "鎵撳紑").SetValue(false)));
+                    Menu.UimTracker.Menu.AddItem(new MenuItem("SAwarenessUIMTrackerActive", "Active").SetValue(false)));
                 Menu.SsCaller.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏁屼汉娑堝けPing", "SAwarenessSSCaller"));
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SSCaller", "SAwarenessSSCaller"));
                 Menu.SsCaller.MenuItems.Add(
                     Menu.SsCaller.Menu.AddItem(
-                        new MenuItem("SAwarenessSSCallerPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0))));
+                        new MenuItem("SAwarenessSSCallerPingTimes", "Ping Times").SetValue(new Slider(0, 5, 0))));
                 Menu.SsCaller.MenuItems.Add(
                     Menu.SsCaller.Menu.AddItem(
-                        new MenuItem("SAwarenessSSCallerPingType", "Ping绫诲瀷").SetValue(
-                            new StringList(new[] { "姝ｅ父", "鍗遍櫓", "Miss", "鍦ㄨ矾涓妡", "鎾ら€€", "鍗忓姪" }))));
+                        new MenuItem("SAwarenessSSCallerPingType", "Ping Type").SetValue(
+                            new StringList(new[] { "Normal", "Danger", "EnemyMissing", "OnMyWay", "Fallback", "AssistMe" }))));
                 Menu.SsCaller.MenuItems.Add(
-                    Menu.SsCaller.Menu.AddItem(new MenuItem("SAwarenessSSCallerLocalPing", "鏈湴Ping").SetValue(false)));
-                Menu.SsCaller.MenuItems.Add(
-                    Menu.SsCaller.Menu.AddItem(
-                        new MenuItem("SAwarenessSSCallerChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                    Menu.SsCaller.Menu.AddItem(new MenuItem("SAwarenessSSCallerLocalPing", "Local Ping").SetValue(false)));
                 Menu.SsCaller.MenuItems.Add(
                     Menu.SsCaller.Menu.AddItem(
-                        new MenuItem("SAwarenessSSCallerDisableTime", "绂佺敤鏃堕棿").SetValue(new Slider(20, 180, 1))));
+                        new MenuItem("SAwarenessSSCallerChatChoice", "Chat Choice").SetValue(
+                            new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.SsCaller.MenuItems.Add(
-                    Menu.SsCaller.Menu.AddItem(new MenuItem("SAwarenessSSCallerActive", "鎵撳紑").SetValue(false)));
+                    Menu.SsCaller.Menu.AddItem(
+                        new MenuItem("SAwarenessSSCallerDisableTime", "Disable Time").SetValue(new Slider(20, 180, 1))));
+                Menu.SsCaller.MenuItems.Add(
+                    Menu.SsCaller.Menu.AddItem(new MenuItem("SAwarenessSSCallerActive", "Active").SetValue(false)));
                 Menu.Killable.Menu =
-                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍙潃", "SAwarenessKillable"));
+                    Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Killable", "SAwarenessKillable"));
                 Menu.Killable.MenuItems.Add(
-                    Menu.Killable.Menu.AddItem(new MenuItem("SAwarenessKillableActive", "鎵撳紑").SetValue(false)));
+                    Menu.Killable.Menu.AddItem(new MenuItem("SAwarenessKillableActive", "Active").SetValue(false)));
                 Menu.Tracker.MenuItems.Add(
-                    Menu.Tracker.Menu.AddItem(new MenuItem("SAwarenessTrackerActive", "鎵撳紑").SetValue(false)));
-          
+                    Menu.Tracker.Menu.AddItem(new MenuItem("SAwarenessTrackerActive", "Active").SetValue(false)));
+
                 //Not crashing
-                Menu.Detector.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-鎺㈡祴", "SAwarenessDetector"));
+                Menu.Detector.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Detector", "SAwarenessDetector"));
                 Menu.VisionDetector.Menu =
-                    Menu.Detector.Menu.AddSubMenu(new LeagueSharp.Common.Menu("瑙嗛噹鎺㈡祴",
+                    Menu.Detector.Menu.AddSubMenu(new LeagueSharp.Common.Menu("VisionDetector",
                         "SAwarenessVisionDetector"));
                 Menu.VisionDetector.MenuItems.Add(
                     Menu.VisionDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessVisionDetectorDrawRange", "鏄剧ず鑼冨洿").SetValue(false)));
+                        new MenuItem("SAwarenessVisionDetectorDrawRange", "Draw Range").SetValue(false)));
                 Menu.VisionDetector.MenuItems.Add(
                     Menu.VisionDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessVisionDetectorActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessVisionDetectorActive", "Active").SetValue(false)));
                 Menu.RecallDetector.Menu =
-                    Menu.Detector.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍥炲煄鎺㈡祴",
+                    Menu.Detector.Menu.AddSubMenu(new LeagueSharp.Common.Menu("RecallDetector",
                         "SAwarenessRecallDetector"));
                 Menu.RecallDetector.MenuItems.Add(
                     Menu.RecallDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessRecallDetectorPingTimes", "Ping娆℃暟").SetValue(new Slider(0, 5, 0))));
+                        new MenuItem("SAwarenessRecallDetectorPingTimes", "Ping Times").SetValue(new Slider(0, 5, 0))));
                 Menu.RecallDetector.MenuItems.Add(
                     Menu.RecallDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessRecallDetectorLocalPing", "鏈湴Ping").SetValue(true)));
+                        new MenuItem("SAwarenessRecallDetectorLocalPing", "Local Ping").SetValue(true)));
                 Menu.RecallDetector.MenuItems.Add(
                     Menu.RecallDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessRecallDetectorChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessRecallDetectorChatChoice", "Chat Choice").SetValue(
+                            new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.RecallDetector.MenuItems.Add(
                     Menu.RecallDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessRecallDetectorMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鑱婂ぉ绐楀彛", "CD杩借釜鍣▅", "鍏ㄩ儴" }))));
+                        new MenuItem("SAwarenessRecallDetectorMode", "Mode").SetValue(
+                            new StringList(new[] { "Chat", "CDTracker", "Both" }))));
                 Menu.RecallDetector.MenuItems.Add(
                     Menu.RecallDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessRecallDetectorActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessRecallDetectorActive", "Active").SetValue(false)));
                 Menu.Detector.MenuItems.Add(
-                    Menu.Detector.Menu.AddItem(new MenuItem("SAwarenessDetectorActive", "鎵撳紑").SetValue(false)));
-                
+                    Menu.Detector.Menu.AddItem(new MenuItem("SAwarenessDetectorActive", "Active").SetValue(false)));
+
                 //Not crashing
-                Menu.Ganks.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-Ganks", "SAwarenessGanks"));
+                Menu.Ganks.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Ganks", "SAwarenessGanks"));
                 Menu.GankTracker.Menu =
-                    Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Gank杩借釜", "SAwarenessGankTracker"));
+                    Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("GankTracker", "SAwarenessGankTracker"));
                 Menu.GankTracker.MenuItems.Add(
                     Menu.GankTracker.Menu.AddItem(
-                        new MenuItem("SAwarenessGankTrackerTrackRange", "杩借釜鑼冨洿").SetValue(new Slider(1, 20000, 1))));
+                        new MenuItem("SAwarenessGankTrackerTrackRange", "Track Range").SetValue(new Slider(1, 20000, 1))));
                 Menu.GankTracker.MenuItems.Add(
-                   Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerKillable", "鍙潃鎻愮ず").SetValue(false)));
+                   Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerKillable", "Only Killable").SetValue(false)));
                 Menu.GankTracker.MenuItems.Add(
-                    Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerActive", "鎵撳紑").SetValue(false)));
+                    Menu.GankTracker.Menu.AddItem(new MenuItem("SAwarenessGankTrackerActive", "Active").SetValue(false)));
                 Menu.GankDetector.Menu =
-                     Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("GankDetector", "SAwarenessGankDetector"));
+                    Menu.Ganks.Menu.AddSubMenu(new LeagueSharp.Common.Menu("GankDetector", "SAwarenessGankDetector"));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorPingTimes", "Ping Times").SetValue(new Slider(0, 5, 0))));
@@ -565,429 +565,429 @@ namespace SAwareness
                             new StringList(new[] { "Normal", "Danger", "EnemyMissing", "OnMyWay", "Fallback", "AssistMe" }))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorLocalPing", "鏈湴Ping").SetValue(true)));
+                        new MenuItem("SAwarenessGankDetectorLocalPing", "Local Ping").SetValue(true)));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
                         new MenuItem("SAwarenessGankDetectorChatChoice", "Chat Choice").SetValue(
                             new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorTrackRangeMin", "鑼冨洿").SetValue(new Slider(1, 10000, 1))));
+                        new MenuItem("SAwarenessGankDetectorTrackRangeMin", "Track Range Min").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
                     Menu.GankDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessGankDetectorTrackRangemax", "杩借釜鑼冨洿").SetValue(new Slider(1, 10000, 1))));
+                        new MenuItem("SAwarenessGankDetectorTrackRangeMax", "Track Range Max").SetValue(new Slider(1, 10000, 1))));
                 Menu.GankDetector.MenuItems.Add(
-                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorShowJungler", "鏄剧ず鎵撻噹").SetValue(false)));
+                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorShowJungler", "Show Jungler").SetValue(false)));
                 Menu.GankDetector.MenuItems.Add(
-                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorActive", "鎵撳紑").SetValue(false)));
+                    Menu.GankDetector.Menu.AddItem(new MenuItem("SAwarenessGankDetectorActive", "Active").SetValue(false)));
                 Menu.Ganks.MenuItems.Add(
-                    Menu.Ganks.Menu.AddItem(new MenuItem("SAwarenessGanksActive", "鎵撳紑").SetValue(false)));
-            
+                    Menu.Ganks.Menu.AddItem(new MenuItem("SAwarenessGanksActive", "Active").SetValue(false)));
+
                 //Not crashing
                 Menu.Health.Menu =
-                    menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-寤虹瓚", "SAwarenessObjectHealth"));
+                    menu.AddSubMenu(new LeagueSharp.Common.Menu("Object Health", "SAwarenessObjectHealth"));
                 Menu.TowerHealth.Menu =
-                    Menu.Health.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐐鐢熷懡", "SAwarenessTowerHealth"));
+                    Menu.Health.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Tower Health", "SAwarenessTowerHealth"));
                 Menu.TowerHealth.MenuItems.Add(
-                    Menu.TowerHealth.Menu.AddItem(new MenuItem("SAwarenessTowerHealthActive", "鎵撳紑").SetValue(false)));
+                    Menu.TowerHealth.Menu.AddItem(new MenuItem("SAwarenessTowerHealthActive", "Active").SetValue(false)));
                 Menu.InhibitorHealth.Menu =
-                    Menu.Health.Menu.AddSubMenu(new LeagueSharp.Common.Menu("姘存櫠鐢熷懡",
+                    Menu.Health.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Inhibitor Health",
                         "SAwarenessInhibitorHealth"));
                 Menu.InhibitorHealth.MenuItems.Add(
                     Menu.InhibitorHealth.Menu.AddItem(
-                        new MenuItem("SAwarenessInhibitorHealthActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessInhibitorHealthActive", "Active").SetValue(false)));
                 Menu.Health.MenuItems.Add(
                     Menu.Health.Menu.AddItem(
-                        new MenuItem("SAwarenessHealthMode", "妯″紡").SetValue(new StringList(new[] { "%", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessHealthMode", "Mode").SetValue(new StringList(new[] { "Percent", "Normal" }))));
                 Menu.Health.MenuItems.Add(
-                    Menu.Health.Menu.AddItem(new MenuItem("SAwarenessHealthActive", "鎵撳紑").SetValue(false)));
-                
+                    Menu.Health.Menu.AddItem(new MenuItem("SAwarenessHealthActive", "Active").SetValue(false)));
+
                 //Not crashing
-                Menu.Wards.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-鐪间綅", "SAwarenessWards"));
+                Menu.Wards.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Wards", "SAwarenessWards"));
                 Menu.WardCorrector.Menu =
-                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐪间綅淇", "SAwarenessWardCorrector"));
+                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("WardCorrector", "SAwarenessWardCorrector"));
                 Menu.WardCorrector.MenuItems.Add(
                     Menu.WardCorrector.Menu.AddItem(
-                        new MenuItem("SAwarenessWardCorrectorKey", "鐑敭").SetValue(new KeyBind(52, KeyBindType.Press))));
+                        new MenuItem("SAwarenessWardCorrectorKey", "Trinket Key").SetValue(new KeyBind(52, KeyBindType.Press))));
                 Menu.WardCorrector.MenuItems.Add(
                     Menu.WardCorrector.Menu.AddItem(
-                        new MenuItem("SAwarenessWardCorrectorActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessWardCorrectorActive", "Active").SetValue(false)));
                 Menu.BushRevealer.Menu =
-                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑽変笡", "SAwarenessBushRevealer"));
+                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("BushRevealer", "SAwarenessBushRevealer"));
                 Menu.BushRevealer.MenuItems.Add(
                     Menu.BushRevealer.Menu.AddItem(
-                        new MenuItem("SAwarenessBushRevealerKey", "鐑敭").SetValue(new KeyBind(32, KeyBindType.Press))));
+                        new MenuItem("SAwarenessBushRevealerKey", "Key").SetValue(new KeyBind(32, KeyBindType.Press))));
                 Menu.BushRevealer.MenuItems.Add(
-                    Menu.BushRevealer.Menu.AddItem(new MenuItem("SAwarenessBushRevealerActive", "鎵撳紑").SetValue(false)));
+                    Menu.BushRevealer.Menu.AddItem(new MenuItem("SAwarenessBushRevealerActive", "Active").SetValue(false)));
                 Menu.BushRevealer.MenuItems.Add(
                     Menu.BushRevealer.Menu.AddItem(new MenuItem("By Beaving & Blm95", "By Beaving & Blm95")));
                 Menu.InvisibleRevealer.Menu =
-                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("闅愬舰鎺㈡祴",
+                    Menu.Wards.Menu.AddSubMenu(new LeagueSharp.Common.Menu("InvisibleRevealer",
                         "SAwarenessInvisibleRevealer"));
                 Menu.InvisibleRevealer.MenuItems.Add(
                     Menu.InvisibleRevealer.Menu.AddItem(
-                        new MenuItem("SAwarenessInvisibleRevealerMode", "妯″紡").SetValue(
-                            new StringList(new[] { "鎵嬪姩", "鑷姩" }))));
+                        new MenuItem("SAwarenessInvisibleRevealerMode", "Mode").SetValue(
+                            new StringList(new[] { "Manual", "Automatic" }))));
                 Menu.InvisibleRevealer.MenuItems.Add(
                     Menu.InvisibleRevealer.Menu.AddItem(
-                        new MenuItem("SAwarenessInvisibleRevealerKey", "鐑敭").SetValue(new KeyBind(32, KeyBindType.Press))));
+                        new MenuItem("SAwarenessInvisibleRevealerKey", "Key").SetValue(new KeyBind(32, KeyBindType.Press))));
                 Menu.InvisibleRevealer.MenuItems.Add(
                     Menu.InvisibleRevealer.Menu.AddItem(
-                        new MenuItem("SAwarenessInvisibleRevealerActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessInvisibleRevealerActive", "Active").SetValue(false)));
                 Menu.Wards.MenuItems.Add(
-                    Menu.Wards.Menu.AddItem(new MenuItem("SAwarenessWardsActive", "鎵撳紑").SetValue(false)));
-                
-                Menu.Activator.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-Activator", "SAwarenessActivator"));
+                    Menu.Wards.Menu.AddItem(new MenuItem("SAwarenessWardsActive", "Active").SetValue(false)));
+
+                Menu.Activator.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Activator", "SAwarenessActivator"));
                 Menu.ActivatorAutoSummonerSpell.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩娉曟湳",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Summoner Spells",
                         "SAwarenessActivatorAutoSummonerSpell"));
                 Menu.ActivatorAutoSummonerSpell.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpell.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorActivatorAutoSummonerSpellActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorActivatorAutoSummonerSpellActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellIgnite.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鐐圭噧",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Ignite",
                         "SAwarenessActivatorAutoSummonerSpellIgnite"));
                 Menu.ActivatorAutoSummonerSpellIgnite.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellIgnite.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellIgniteActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellIgniteActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellHeal.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩娌荤枟",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Heal",
                         "SAwarenessActivatorAutoSummonerSpellHeal"));
                 Menu.ActivatorAutoSummonerSpellHeal.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellHeal.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealPercent", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealPercent", "Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellHeal.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellHeal.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealAllyActive", "闃熷弸").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealAllyActive", "Ally Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellHeal.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellHeal.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellHealActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellBarrier.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩灞忛殰",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Barrier",
                         "SAwarenessActivatorAutoSummonerSpellBarrier"));
                 Menu.ActivatorAutoSummonerSpellBarrier.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellBarrier.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierPercent", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierPercent", "Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellBarrier.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellBarrier.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellBarrierActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellExhaust.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩铏氬急",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Exhaust",
                         "SAwarenessActivatorAutoSummonerSpellExhaust"));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustAutoCast", "鐑敭").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustAutoCast", "AutoCast On Key").SetValue(
                             new KeyBind(32, KeyBindType.Press))));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustMinEnemies", "鏁屼汉鏁伴噺").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustMinEnemies", "Min Enemies").SetValue(
                             new Slider(3, 5, 1))));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustAllyPercent", "闃熷弸").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustAllyPercent", "Ally Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustSelfPercent", "鑷繁").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustSelfPercent", "Self Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustUseUltSpells", "澶ф嫑").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustUseUltSpells", "Ult Spells").SetValue(
                             false)));
                 Menu.ActivatorAutoSummonerSpellExhaust.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellExhaust.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellExhaustActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍑€鍖栭€夐」",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Cleanse",
                         "SAwarenessActivatorAutoSummonerSpellCleanse"));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseStun", "鐪╂檿").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseStun", "Stun").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSilence", "娌夐粯").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSilence", "Silence").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseTaunt", "鍢茶").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseTaunt", "Taunt").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseFear", "鎭愭儳").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseFear", "Fear").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseCharm", "榄呮儜").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseCharm", "Charm").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseBlind", "鑷寸洸").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseBlind", "Blind").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseDisarm", "鐐稿脊").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseDisarm", "Disarm").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSlow", "鍑忛€焲").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSlow", "Slow").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseCombatDehancer", "铏氬急")
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseCombatDehancer", "Combat Dehancer")
                             .SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSnare", "闄烽槺").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseSnare", "Snare").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleansePoison", "涓瘨").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleansePoison", "Posion").SetValue(false)));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseMinSpells", "娉曟湳>X").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseMinSpells", "Min Spells").SetValue(
                             new Slider(2, 10, 1))));
                 Menu.ActivatorAutoSummonerSpellCleanse.MenuItems.Add(
                     Menu.ActivatorAutoSummonerSpellCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoSummonerSpellCleanseActive", "Active").SetValue(false)));
                 Menu.AutoSmite.Menu =
-                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鎯╂垝",
+                    Menu.ActivatorAutoSummonerSpell.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoSmite",
                         "SAwarenessAutoSmite"));
                 Menu.AutoSmite.MenuItems.Add(
                     Menu.AutoSmite.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoSmiteSmallCampsActive", "鎯╂垝灏忛噹").SetValue(false)));
+                        new MenuItem("SAwarenessAutoSmiteSmallCampsActive", "Smite Small Camps").SetValue(false)));
                 Menu.AutoSmite.MenuItems.Add(
                     Menu.AutoSmite.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoSmiteAutoSpell", "浣跨敤鑷姩娉曟湳").SetValue(false)));
+                        new MenuItem("SAwarenessAutoSmiteAutoSpell", "Use Auto Spell").SetValue(false)));
                 Menu.AutoSmite.MenuItems.Add(
                     Menu.AutoSmite.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoSmiteKeyActive", "鐑敭").SetValue(new KeyBind(78, KeyBindType.Toggle))));
+                        new MenuItem("SAwarenessAutoSmiteKeyActive", "Key").SetValue(new KeyBind(78, KeyBindType.Toggle))));
                 Menu.AutoSmite.MenuItems.Add(
-                    Menu.AutoSmite.Menu.AddItem(new MenuItem("SAwarenessAutoSmiteActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoSmite.Menu.AddItem(new MenuItem("SAwarenessAutoSmiteActive", "Active").SetValue(false)));
 
                 Menu.ActivatorOffensive.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏀诲嚮鐗╁搧",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Offensive Items",
                         "SAwarenessActivatorOffensive"));
                 Menu.ActivatorOffensiveAd.Menu =
                     Menu.ActivatorOffensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AD",
                         "SAwarenessActivatorOffensiveAd"));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdBOTRK", "鐮磋触").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveAdBOTRK", "Blade of the Ruined King").SetValue(false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdEntropy", "鍐伴敜").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveAdEntropy", "Entropy").SetValue(false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdRavenousHydra", "涔濆ご铔噟").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveAdRavenousHydra", "Ravenous Hydra").SetValue(false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdSwordOfTheDevine", "绁炲湥涔嬪墤").SetValue(
+                        new MenuItem("SAwarenessActivatorOffensiveAdSwordOfTheDevine", "Sword Of The Devine").SetValue(
                             false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdTiamat", "鎻愪簹椹壒").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveAdTiamat", "Tiamat").SetValue(false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdYoumuusGhostblade", "骞芥ⅵ").SetValue(
+                        new MenuItem("SAwarenessActivatorOffensiveAdYoumuusGhostblade", "Youmuu's Ghostblade").SetValue(
                             false)));
                 //Menu.ActivatorOffensiveAd.MenuItems.Add(Menu.ActivatorOffensiveAd.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorOffensiveAdMuramana", "Muramana").SetValue(false)));
                 Menu.ActivatorOffensiveAd.MenuItems.Add(
                     Menu.ActivatorOffensiveAd.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveAdActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveAdActive", "Active").SetValue(false)));
 
                 Menu.ActivatorOffensiveAp.Menu =
                     Menu.ActivatorOffensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AP",
                         "SAwarenessActivatorOffensiveAp"));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApBilgewaterCutlass", "灏忓集鍒€").SetValue(
+                        new MenuItem("SAwarenessActivatorOffensiveApBilgewaterCutlass", "Bilgewater Cutlass").SetValue(
                             false)));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApBlackfireTorch", "榛値鐏偓 ").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveApBlackfireTorch", "Blackfire Torch").SetValue(false)));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApDFG", "鍐ョ伀").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveApDFG", "Deathfire Grasp").SetValue(false)));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApHextechGunblade", "绉戞妧鏋垉").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveApHextechGunblade", "Hextech Gunblade").SetValue(false)));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApTwinShadows", "鍙岀敓鏆楀奖").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveApTwinShadows", "Twin Shadows").SetValue(false)));
                 //Menu.ActivatorOffensiveAp.MenuItems.Add(Menu.ActivatorOffensiveAp.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorOffensiveApOdynsVeil", "Odyn's Veil").SetValue(false)));
                 Menu.ActivatorOffensiveAp.MenuItems.Add(
                     Menu.ActivatorOffensiveAp.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveApActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveApActive", "Active").SetValue(false)));
                 Menu.ActivatorOffensive.MenuItems.Add(
                     Menu.ActivatorOffensive.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveKey", "鐑敭").SetValue(new KeyBind(32,
+                        new MenuItem("SAwarenessActivatorOffensiveKey", "Key").SetValue(new KeyBind(32,
                             KeyBindType.Press))));
                 Menu.ActivatorOffensive.MenuItems.Add(
                     Menu.ActivatorOffensive.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorOffensiveActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorOffensiveActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensive.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("闃插尽鐗╁搧",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Defensive Items",
                         "SAwarenessActivatorDefensive"));
                 Menu.ActivatorDefensiveCleanseConfig.Menu =
-                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍑€鍖栭€夐」",
+                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Cleanse Config",
                         "SAwarenessActivatorDefensiveCleanseConfig"));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigStun", "鏄忚糠").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigStun", "Stun").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSilence", "娌夐粯").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSilence", "Silence").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigTaunt", "鍢茶").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigTaunt", "Taunt").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigFear", "鎭愭儳").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigFear", "Fear").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigCharm", "榄呮儜").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigCharm", "Charm").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigBlind", "鑷寸洸").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigBlind", "Blind").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigDisarm", "鐐稿脊").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigDisarm", "Disarm").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSuppress", "鍘嬪埗").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSuppress", "Suppress").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSlow", "鍑忛€焲").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSlow", "Slow").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigCombatDehancer", "铏氬急")
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigCombatDehancer", "Combat Dehancer")
                             .SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSnare", "闄烽槺").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigSnare", "Snare").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigPoison", "涓瘨").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseConfigPoison", "Posion").SetValue(false)));
                 //Menu.ActivatorDefensiveCleanseConfig.MenuItems.Add(Menu.ActivatorDefensiveCleanseConfig.Menu.AddItem(new LeagueSharp.Common.MenuItem("SAwarenessActivatorDefensiveCleanseConfigActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveSelfShield.Menu =
                     Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu(
-                        "鎶ょ浘", "SAwarenessActivatorDefensiveSelfShield"));
+                        "Self Shield | Not implemented", "SAwarenessActivatorDefensiveSelfShield"));
                 Menu.ActivatorDefensiveSelfShield.MenuItems.Add(
                     Menu.ActivatorDefensiveSelfShield.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldSeraphEmbrace", "鐐藉ぉ浣縷").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldSeraphEmbrace", "Seraph Embrace").SetValue(
                             false)));
                 Menu.ActivatorDefensiveSelfShield.MenuItems.Add(
                     Menu.ActivatorDefensiveSelfShield.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldOhmwrecker", "骞叉壈姘存櫠").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldOhmwrecker", "Ohmwrecker").SetValue(false)));
                 Menu.ActivatorDefensiveSelfShield.MenuItems.Add(
                     Menu.ActivatorDefensiveSelfShield.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveSelfShieldActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveWoogletZhonya.Menu =
                     Menu.ActivatorDefensive.Menu.AddSubMenu(
-                        new LeagueSharp.Common.Menu("涓簹|娌冩牸鍕掔壒",
+                        new LeagueSharp.Common.Menu("Wooglet/Zhonya",
                             "SAwarenessActivatorDefensiveWoogletZhonya"));
                 Menu.ActivatorDefensiveWoogletZhonya.MenuItems.Add(
                     Menu.ActivatorDefensiveWoogletZhonya.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaWooglet", "娌冩牸鍕掔壒").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaWooglet", "Wooglet").SetValue(false)));
                 Menu.ActivatorDefensiveWoogletZhonya.MenuItems.Add(
                     Menu.ActivatorDefensiveWoogletZhonya.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaZhonya", "涓簹").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaZhonya", "Zhonya").SetValue(false)));
                 Menu.ActivatorDefensiveWoogletZhonya.MenuItems.Add(
                     Menu.ActivatorDefensiveWoogletZhonya.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveWoogletZhonyaActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveDebuffSlow.Menu =
-                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍑忛€焲",
+                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Slow Enemy",
                         "SAwarenessActivatorDefensiveDebuffSlow"));
                 Menu.ActivatorDefensiveDebuffSlow.MenuItems.Add(
                     Menu.ActivatorDefensiveDebuffSlow.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowRanduins", "鍏伴】").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowRanduins", "Randuins Omen").SetValue(false)));
                 Menu.ActivatorDefensiveDebuffSlow.MenuItems.Add(
                     Menu.ActivatorDefensiveDebuffSlow.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowConfigRanduins", "鏁屾柟浜烘暟")
+                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowConfigRanduins", "Enemy Count Randuins")
                             .SetValue(new Slider(2, 5, 1))));
                 Menu.ActivatorDefensiveDebuffSlow.MenuItems.Add(
                     Menu.ActivatorDefensiveDebuffSlow.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowFrostQueensClaim", "鍐伴湝濂崇帇")
+                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowFrostQueensClaim", "Frost Queens Claim")
                             .SetValue(false)));
                 Menu.ActivatorDefensiveDebuffSlow.MenuItems.Add(
                     Menu.ActivatorDefensiveDebuffSlow.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowConfigFrostQueensClaim", "鏁屾柟浜烘暟")
+                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowConfigFrostQueensClaim", "Enemy Count FQC")
                             .SetValue(new Slider(2, 5, 1))));
                 Menu.ActivatorDefensiveDebuffSlow.MenuItems.Add(
                     Menu.ActivatorDefensiveDebuffSlow.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveDebuffSlowActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveCleanseSelf.Menu =
-                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍑€鍖栭€夐」",
+                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Cleanse me",
                         "SAwarenessActivatorDefensiveCleanseSelf"));
                 Menu.ActivatorDefensiveCleanseSelf.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseSelf.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfQSS", "姘撮摱楗板甫").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfQSS", "QSS").SetValue(false)));
                 Menu.ActivatorDefensiveCleanseSelf.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseSelf.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfMercurialScimitar", "姘撮摱寮垁")
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfMercurialScimitar", "Mercurial Scimitar")
                             .SetValue(false)));
                 Menu.ActivatorDefensiveCleanseSelf.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseSelf.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfDervishBlade", "鑻﹁鍍т箣鍒億").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfDervishBlade", "Dervish Blade").SetValue(
                             false)));
                 Menu.ActivatorDefensiveCleanseSelf.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseSelf.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfConfigMinSpells", "娉曟湳>X").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfConfigMinSpells", "Min Spells").SetValue(
                             new Slider(2, 10, 1))));
                 Menu.ActivatorDefensiveCleanseSelf.MenuItems.Add(
                     Menu.ActivatorDefensiveCleanseSelf.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveCleanseSelfActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveShieldBoost.Menu =
                     Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu(
-                        "鎶ょ浘", "SAwarenessActivatorDefensiveShieldBoost"));
+                        "Shield/Boost | Not implemented", "SAwarenessActivatorDefensiveShieldBoost"));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
                         new MenuItem("SAwarenessActivatorDefensiveShieldBoostLocketofIronSolari",
-                            "閽㈤搧鐑堥槼涔嬪專").SetValue(false)));
+                            "Locket of Iron Solari").SetValue(false)));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
                         new MenuItem("SAwarenessActivatorDefensiveShieldBoostTalismanofAscension",
-                            "椋炲崌鎶ょ").SetValue(false)));
+                            "Talisman of Ascension").SetValue(false)));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostFaceOfTheMountain", "灞卞渤涔嬪")
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostFaceOfTheMountain", "Face of the Mountain")
                             .SetValue(false)));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostGuardiansHorn", "瀹堟姢澶╀娇").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostGuardiansHorn", "Guardians Horn").SetValue(
                             false)));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostConfigHealth", "%").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostConfigHealth", "Health Percent").SetValue(
                             new Slider(20, 100, 1))));
                 Menu.ActivatorDefensiveShieldBoost.MenuItems.Add(
                     Menu.ActivatorDefensiveShieldBoost.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostActive", "Active").SetValue(false)));
 
                 Menu.ActivatorDefensiveMikaelCleanse.Menu =
-                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍧╁煔",
+                    Menu.ActivatorDefensive.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Mikael Cleanse",
                         "SAwarenessActivatorDefensiveMikaelCleanse"));
                 Menu.ActivatorDefensiveMikaelCleanse.MenuItems.Add(
                     Menu.ActivatorDefensiveMikaelCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigAlly", "闃熷弸浣跨敤").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigAlly", "On Allies").SetValue(false)));
                 Menu.ActivatorDefensiveMikaelCleanse.MenuItems.Add(
                     Menu.ActivatorDefensiveMikaelCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigAllyHealth", "闃熷弸鐢熷懡")
+                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigAllyHealth", "Ally Health")
                             .SetValue(new Slider(20, 100, 0))));
                 Menu.ActivatorDefensiveMikaelCleanse.MenuItems.Add(
                     Menu.ActivatorDefensiveMikaelCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigSelfHealth", "鑷繁鐢熷懡")
+                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigSelfHealth", "Self Health")
                             .SetValue(new Slider(20, 100, 0))));
                 Menu.ActivatorDefensiveMikaelCleanse.MenuItems.Add(
                     Menu.ActivatorDefensiveMikaelCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigMinSpells", "娉曟湳>X").SetValue(
+                        new MenuItem("SAwarenessActivatorDefensiveMikaelCleanseConfigMinSpells", "Min Spells").SetValue(
                             new Slider(2, 10, 1))));
                 Menu.ActivatorDefensiveMikaelCleanse.MenuItems.Add(
                     Menu.ActivatorDefensiveMikaelCleanse.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveShieldBoostActive", "Active").SetValue(false)));
                 Menu.ActivatorDefensive.MenuItems.Add(
                     Menu.ActivatorDefensive.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorDefensiveActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorDefensiveActive", "Active").SetValue(false)));
 
                 //Menu.ActivatorMisc.Menu =
                 //    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Misc Items",
@@ -1049,25 +1049,25 @@ namespace SAwareness
                 //        new MenuItem("SAwarenessActivatorOffensiveActive", "Active").SetValue(false)));
 
                 Menu.AutoShield.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鎶ょ浘",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoShield | Beta",
                         "SAwarenessAutoShield"));
                 Menu.AutoShield.MenuItems.Add(
                     Menu.AutoShield.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoShieldBlockAA", "鏍兼尅骞矨").SetValue(false)));
+                        new MenuItem("SAwarenessAutoShieldBlockAA", "Block AutoAttack").SetValue(false)));
                 Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockCC", "鏍兼尅缇ゆ帶").SetValue(false)));
-                Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoShieldBlockDamageAmount", "鏍兼尅浼ゅ").SetValue(
-                            new StringList(new[] { "涓瓑", "楂榺", "鏋侀珮" }))));
+                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockCC", "Block CC").SetValue(false)));
                 Menu.AutoShield.MenuItems.Add(
                     Menu.AutoShield.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoShieldBlockMinDamageAmount", "鏍兼尅min浼ゅ").SetValue(
+                        new MenuItem("SAwarenessAutoShieldBlockDamageAmount", "Block Damage").SetValue(
+                            new StringList(new[] { "Medium", "High", "Extreme" }))));
+                Menu.AutoShield.MenuItems.Add(
+                    Menu.AutoShield.Menu.AddItem(
+                        new MenuItem("SAwarenessAutoShieldBlockMinDamageAmount", "Block min Damage").SetValue(
                             new Slider(50, 2000, 1))));
                 Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockableSpellsActive", "鏍兼尅鎸囧畾娉曟湳").SetValue(false)));
+                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockableSpellsActive", "Block specified Spells").SetValue(false)));
                 Menu.AutoShieldBlockableSpells.Menu =
-                    Menu.AutoShield.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏍兼尅",
+                    Menu.AutoShield.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Blockable Spells",
                         "SAwarenessAutoShieldBlockableSpells"));
                 foreach (var spell in AutoShield.GetBlockableSpells())
                 {
@@ -1075,121 +1075,121 @@ namespace SAwareness
                         Menu.AutoShieldBlockableSpells.Menu.AddItem(new MenuItem("SAwarenessAutoShieldBlockableSpells" + spell, spell).SetValue(false)));
                 }
                 Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldAlly", "闃熷弸鎶ょ浘").SetValue(false)));
+                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldAlly", "Shield Ally").SetValue(false)));
                 Menu.AutoShield.MenuItems.Add(
-                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoShield.Menu.AddItem(new MenuItem("SAwarenessAutoShieldActive", "Active").SetValue(false)));
                 Menu.AutoPot.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鑽按", "SAwarenessAutoPot"));
-                tempSettings = Menu.AutoPot.AddMenuItemSettings("绾㈣嵂",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoPot", "SAwarenessAutoPot"));
+                tempSettings = Menu.AutoPot.AddMenuItemSettings("HealthPot",
                     "SAwarenessAutoPotHealthPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoPotHealthPotPercent", "%").SetValue(new Slider(20, 99,
+                        new MenuItem("SAwarenessAutoPotHealthPotPercent", "Health Percent").SetValue(new Slider(20, 99,
                             0))));
                 tempSettings.MenuItems.Add(
-                    tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotHealthPotActive", "鎵撳紑").SetValue(false)));
-                tempSettings = Menu.AutoPot.AddMenuItemSettings("钃濊嵂",
+                    tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotHealthPotActive", "Active").SetValue(false)));
+                tempSettings = Menu.AutoPot.AddMenuItemSettings("ManaPot",
                     "SAwarenessAutoPotManaPot");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoPotManaPotPercent", "%").SetValue(new Slider(20, 99, 0))));
+                        new MenuItem("SAwarenessAutoPotManaPotPercent", "Mana Percent").SetValue(new Slider(20, 99, 0))));
                 tempSettings.MenuItems.Add(
-                    tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "鎵撳紑").SetValue(false)));
-					Menu.AutoPot.MenuItems.Add( 
- 		                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotOverusage", "闃叉閲嶅浣跨敤").SetValue(false))); 
+                    tempSettings.Menu.AddItem(new MenuItem("SAwarenessAutoPotManaPotActive", "Active").SetValue(false)));
                 Menu.AutoPot.MenuItems.Add(
-                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotOverusage", "Prevent Overusage").SetValue(false)));
+                Menu.AutoPot.MenuItems.Add(
+                    Menu.AutoPot.Menu.AddItem(new MenuItem("SAwarenessAutoPotActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoHeal.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩娌荤枟",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoHeal | Beta",
                         "SAwarenessActivatorAutoHeal"));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
-                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "%").SetValue(new Slider(20, 99, 0))));
+                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealPercent", "Percent").SetValue(new Slider(20, 99, 0))));
                 Menu.ActivatorAutoHeal.MenuItems.Add(
-                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealActive", "鎵撳紑").SetValue(false)));
+                    Menu.ActivatorAutoHeal.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoHealActive", "Active").SetValue(false)));
                 Menu.ActivatorAutoUlt.Menu =
-                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩澶ф嫑",
+                    Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoUlt | Beta",
                         "SAwarenessActivatorAutoUlt"));
                 Menu.ActivatorAutoUlt.MenuItems.Add(
-                    Menu.ActivatorAutoUlt.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoUltAlly", "闃熷弸").SetValue(false)));
+                    Menu.ActivatorAutoUlt.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoUltAlly", "Ally").SetValue(false)));
                 Menu.ActivatorAutoUlt.MenuItems.Add(
-                    Menu.ActivatorAutoUlt.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoUltActive", "鎵撳紑").SetValue(false)));
+                    Menu.ActivatorAutoUlt.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoUltActive", "Active").SetValue(false)));
                 Menu.Activator.MenuItems.Add(
-                    Menu.Activator.Menu.AddItem(new MenuItem("SAwarenessActivatorActive", "鎵撳紑").SetValue(false)));
+                    Menu.Activator.Menu.AddItem(new MenuItem("SAwarenessActivatorActive", "Active").SetValue(false)));
 
                 Menu.ActivatorAutoQss.Menu =
-                   Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("姘撮摱寮垁",
+                   Menu.Activator.Menu.AddSubMenu(new LeagueSharp.Common.Menu("QSS | Beta",
                        "SAwarenessActivatorAutoQssConfig"));
                 Menu.ActivatorAutoQss.MenuItems.Add(
                     Menu.ActivatorAutoQss.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssMinSpells", "娉曟湳>X").SetValue(
+                        new MenuItem("SAwarenessActivatorAutoQssMinSpells", "Min Spells").SetValue(
                             new Slider(2, 10, 1))));
                 Menu.ActivatorAutoQss.MenuItems.Add(
-                    Menu.ActivatorAutoQss.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoQssActive", "鎵撳紑").SetValue(false)));
+                    Menu.ActivatorAutoQss.Menu.AddItem(new MenuItem("SAwarenessActivatorAutoQssActive", "Active").SetValue(false)));
 
                 Menu.ActivatorAutoQssConfig.Menu =
-                    Menu.ActivatorAutoQss.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璁剧疆",
+                    Menu.ActivatorAutoQss.Menu.AddSubMenu(new LeagueSharp.Common.Menu("QSS Config",
                         "SAwarenessActivatorAutoQssConfig"));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigStun", "鏄忚糠").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigStun", "Stun").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigSilence", "娌夐粯").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigSilence", "Silence").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigTaunt", "鍢茶").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigTaunt", "Taunt").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigFear", "鎭愭儳").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigFear", "Fear").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigCharm", "榄呮儜").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigCharm", "Charm").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigBlind", "鑷寸洸").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigBlind", "Blind").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigDisarm", "鐐稿脊").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigDisarm", "Disarm").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigSuppress", "鍘嬪埗").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigSuppress", "Suppress").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigSlow", "鍑忛€焲").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigSlow", "Slow").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigCombatDehancer", "铏氬急")
+                        new MenuItem("SAwarenessActivatorAutoQssConfigCombatDehancer", "Combat Dehancer")
                             .SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigSnare", "闄烽槺").SetValue(false)));
+                        new MenuItem("SAwarenessActivatorAutoQssConfigSnare", "Snare").SetValue(false)));
                 Menu.ActivatorAutoQssConfig.MenuItems.Add(
                     Menu.ActivatorAutoQssConfig.Menu.AddItem(
-                        new MenuItem("SAwarenessActivatorAutoQssConfigPoison", "涓瘨").SetValue(false)));  
-                
+                        new MenuItem("SAwarenessActivatorAutoQssConfigPoison", "Posion").SetValue(false)));  
+
                 ////Not crashing
-                Menu.Misc.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-鏉傞」", "SAwarenessMisc"));
+                Menu.Misc.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("Misc", "SAwarenessMisc"));
                 Menu.Misc.MenuItems.Add(
-                    Menu.Misc.Menu.AddItem(new MenuItem("SAwarenessMiscActive", "鎵撳紑").SetValue(false)));
+                    Menu.Misc.Menu.AddItem(new MenuItem("SAwarenessMiscActive", "Active").SetValue(false)));
                 Menu.SkinChanger.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鎹㈣偆", "SAwarenessSkinChanger"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SkinChanger", "SAwarenessSkinChanger"));
                 Menu.SkinChanger.MenuItems.Add(
                     Menu.SkinChanger.Menu.AddItem(
-                        new MenuItem("SAwarenessSkinChangerSkinName", "鐨偆").SetValue(
+                        new MenuItem("SAwarenessSkinChangerSkinName", "Skin").SetValue(
                             new StringList(SkinChanger.GetSkinList(ObjectManager.Player.ChampionName))).DontSave()));
                 Menu.SkinChanger.MenuItems.Add(
-                    Menu.SkinChanger.Menu.AddItem(new MenuItem("SAwarenessSkinChangerActive", "鎵撳紑").SetValue(false)));
+                    Menu.SkinChanger.Menu.AddItem(new MenuItem("SAwarenessSkinChangerActive", "Active").SetValue(false)));
                 Menu.SafeMovement.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("瀹夊叏绉诲姩", "SAwarenessSafeMovement"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("SafeMovement", "SAwarenessSafeMovement"));
                 Menu.SafeMovement.MenuItems.Add(
                     Menu.SafeMovement.Menu.AddItem(
-                        new MenuItem("SAwarenessSafeMovementBlockIntervall", "闅滅闂撮殧").SetValue(new Slider(20,
+                        new MenuItem("SAwarenessSafeMovementBlockIntervall", "Block Interval").SetValue(new Slider(20,
                             1000, 0))));
                 Menu.SafeMovement.MenuItems.Add(
-                    Menu.SafeMovement.Menu.AddItem(new MenuItem("SAwarenessSafeMovementActive", "鎵撳紑").SetValue(false)));
+                    Menu.SafeMovement.Menu.AddItem(new MenuItem("SAwarenessSafeMovementActive", "Active").SetValue(false)));
                 Menu.AutoLevler.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鑷姩鍔犵偣", "SAwarenessAutoLevler"));
-                tempSettings = Menu.AutoLevler.AddMenuItemSettings("浼樺厛",
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("AutoLevler", "SAwarenessAutoLevler"));
+                tempSettings = Menu.AutoLevler.AddMenuItemSettings("Priority",
                     "SAwarenessAutoLevlerPriority");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
@@ -1205,115 +1205,111 @@ namespace SAwareness
                         new MenuItem("SAwarenessAutoLevlerPrioritySliderR", "R").SetValue(new Slider(0, 3, 0))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerPriorityFirstSpells", "妯″紡").SetValue(
+                        new MenuItem("SAwarenessAutoLevlerPriorityFirstSpells", "Mode").SetValue(
                             new StringList(new[] { "Q W E", "Q E W", "W Q E", "W E Q", "E Q W", "E W Q" }))));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerPriorityFirstSpellsActive", "妯″紡鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessAutoLevlerPriorityFirstSpellsActive", "Mode Active").SetValue(false)));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerPriorityActive", "鎵撳紑").SetValue(false).DontSave()));
-                tempSettings = Menu.AutoLevler.AddMenuItemSettings("椤哄簭",
+                        new MenuItem("SAwarenessAutoLevlerPriorityActive", "Active").SetValue(false).DontSave()));
+                tempSettings = Menu.AutoLevler.AddMenuItemSettings("Sequence | not implemented",
                     "SAwarenessAutoLevlerSequence");
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerSequenceLoadChampion", "璇诲彇鑻遍泟").SetValue(false)
+                        new MenuItem("SAwarenessAutoLevlerSequenceLoadChampion", "Load Champion").SetValue(false)
                             .DontSave()));
                 tempSettings.MenuItems.Add(
                     tempSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerSequenceActive", "鎵撳紑").SetValue(false).DontSave()));
+                        new MenuItem("SAwarenessAutoLevlerSequenceActive", "Active").SetValue(false).DontSave()));
                 Menu.AutoLevler.MenuItems.Add(
                     Menu.AutoLevler.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLevlerSMode", "妯″紡").SetValue(
-                            new StringList(new[] { "椤哄簭", "浼樺厛", "鍙姞 R" }))));
+                        new MenuItem("SAwarenessAutoLevlerSMode", "Mode").SetValue(
+                            new StringList(new[] { "Sequence", "Priority", "Only R" }))));
                 Menu.AutoLevler.MenuItems.Add(
-                    Menu.AutoLevler.Menu.AddItem(new MenuItem("SAwarenessAutoLevlerActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoLevler.Menu.AddItem(new MenuItem("SAwarenessAutoLevlerActive", "Active").SetValue(false)));
                 Menu.MoveToMouse.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璺熼殢榧犳爣", "SAwarenessMoveToMouse"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Move To Mouse", "SAwarenessMoveToMouse"));
                 Menu.MoveToMouse.MenuItems.Add(
                     Menu.MoveToMouse.Menu.AddItem(
-                        new MenuItem("SAwarenessMoveToMouseKey", "鐑敭").SetValue(new KeyBind(90, KeyBindType.Press))));
+                        new MenuItem("SAwarenessMoveToMouseKey", "Key").SetValue(new KeyBind(90, KeyBindType.Press))));
                 Menu.MoveToMouse.MenuItems.Add(
-                    Menu.MoveToMouse.Menu.AddItem(new MenuItem("SAwarenessMoveToMouseActive", "鎵撳紑").SetValue(false)));
+                    Menu.MoveToMouse.Menu.AddItem(new MenuItem("SAwarenessMoveToMouseActive", "Active").SetValue(false)));
                 Menu.SurrenderVote.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鎶曢檷", "SAwarenessSurrenderVote"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Surrender Vote", "SAwarenessSurrenderVote"));
                 Menu.SurrenderVote.MenuItems.Add(
                     Menu.SurrenderVote.Menu.AddItem(
-                        new MenuItem("SAwarenessSurrenderVoteChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessSurrenderVoteChatChoice", "Chat Choice").SetValue(
+                            new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.SurrenderVote.MenuItems.Add(
                     Menu.SurrenderVote.Menu.AddItem(
-                        new MenuItem("SAwarenessSurrenderVoteActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessSurrenderVoteActive", "Active").SetValue(false)));
                 Menu.AutoLatern.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("涓€閿偣鐏", "SAwarenessAutoLatern"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Latern", "SAwarenessAutoLatern"));
                 Menu.AutoLatern.MenuItems.Add(
                     Menu.AutoLatern.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoLaternKey", "鐑敭").SetValue(new KeyBind(84, KeyBindType.Press))));
+                        new MenuItem("SAwarenessAutoLaternKey", "Key").SetValue(new KeyBind(84, KeyBindType.Press))));
                 Menu.AutoLatern.MenuItems.Add(
-                    Menu.AutoLatern.Menu.AddItem(new MenuItem("SAwarenessAutoLaternActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoLatern.Menu.AddItem(new MenuItem("SAwarenessAutoLaternActive", "Active").SetValue(false)));
                 Menu.AutoJump.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璺崇溂", "SAwarenessAutoJump"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Auto Jump", "SAwarenessAutoJump"));
                 Menu.AutoJump.MenuItems.Add(
                     Menu.AutoJump.Menu.AddItem(
-                        new MenuItem("SAwarenessAutoJumpKey", "鐑敭").SetValue(new KeyBind(85, KeyBindType.Press))));
+                        new MenuItem("SAwarenessAutoJumpKey", "Key").SetValue(new KeyBind(85, KeyBindType.Press))));
                 Menu.AutoJump.MenuItems.Add(
-                    Menu.AutoJump.Menu.AddItem(new MenuItem("SAwarenessAutoJumpActive", "鎵撳紑").SetValue(false)));
+                    Menu.AutoJump.Menu.AddItem(new MenuItem("SAwarenessAutoJumpActive", "Active").SetValue(false)));
                 Menu.DisconnectDetector.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏂嚎妫€娴嬪櫒",
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Disconnect Detector",
                         "SAwarenessDisconnectDetector"));
                 Menu.DisconnectDetector.MenuItems.Add(
                     Menu.DisconnectDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessDisconnectDetectorChatChoice", "鑱婂ぉ閫夋嫨").SetValue(
-                            new StringList(new[] { "涓嶇敤", "鏈湴", "姝ｅ父" }))));
+                        new MenuItem("SAwarenessDisconnectDetectorChatChoice", "Chat Choice").SetValue(
+                            new StringList(new[] { "None", "Local", "Server" }))));
                 Menu.DisconnectDetector.MenuItems.Add(
                     Menu.DisconnectDetector.Menu.AddItem(
-                        new MenuItem("SAwarenessDisconnectDetectorActive", "鎵撳紑").SetValue(false)));
+                        new MenuItem("SAwarenessDisconnectDetectorActive", "Active").SetValue(false)));
                 Menu.TurnAround.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璋冭浆鏂瑰悜", "SAwarenessTurnAround"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Turn Around", "SAwarenessTurnAround"));
                 Menu.TurnAround.MenuItems.Add(
-                    Menu.TurnAround.Menu.AddItem(new MenuItem("SAwarenessTurnAroundActive", "鎵撳紑").SetValue(false)));
+                    Menu.TurnAround.Menu.AddItem(new MenuItem("SAwarenessTurnAroundActive", "Active").SetValue(false)));
                 Menu.MinionBars.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("琛ュ叺鎻愮ず", "SAwarenessMinionBars"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Minion Bars", "SAwarenessMinionBars"));
                 Menu.MinionBars.MenuItems.Add(
-                    Menu.MinionBars.Menu.AddItem(new MenuItem("SAwarenessMinionBarsGlowActive", "楂樹寒鎻愮ず").SetValue(false)));
+                    Menu.MinionBars.Menu.AddItem(new MenuItem("SAwarenessMinionBarsGlowActive", "Glow Killable").SetValue(false)));
                 Menu.MinionBars.MenuItems.Add(
-                    Menu.MinionBars.Menu.AddItem(new MenuItem("SAwarenessMinionBarsActive", "鎵撳紑").SetValue(false)));
+                    Menu.MinionBars.Menu.AddItem(new MenuItem("SAwarenessMinionBarsActive", "Active").SetValue(false)));
                 //Menu.MinionLocation.Menu =
                 //    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Minion Location", "SAwarenessMinionLocation"));
                 //Menu.MinionLocation.MenuItems.Add(
                 //    Menu.MinionLocation.Menu.AddItem(new MenuItem("SAwarenessMinionLocationActive", "Active").SetValue(false)));
                 Menu.FlashJuke.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("闂幇娆洪獥", "SAwarenessFlashJuke"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Flash Juke", "SAwarenessFlashJuke"));
                 Menu.FlashJuke.MenuItems.Add(
-                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeKeyActive", "鐑敭").SetValue(new KeyBind(90, KeyBindType.Press))));
+                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeKeyActive", "Active Key").SetValue(new KeyBind(90, KeyBindType.Press))));
                 Menu.FlashJuke.MenuItems.Add(
-                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeRecall", "鍥炲煄").SetValue(false)));
+                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeRecall", "Recall").SetValue(false)));
                 Menu.FlashJuke.MenuItems.Add(
-                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeActive", "鎵撳紑").SetValue(false)));
+                    Menu.FlashJuke.Menu.AddItem(new MenuItem("SAwarenessFlashJukeActive", "Active").SetValue(false)));
                 Menu.EasyRangedJungle.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鏃犱激鎵撻噹", "SAwarenessEasyRangedJungle"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Ranged Jungle Spots", "SAwarenessEasyRangedJungle"));
                 Menu.EasyRangedJungle.MenuItems.Add(
-                    Menu.EasyRangedJungle.Menu.AddItem(new MenuItem("SAwarenessEasyRangedJungleActive", "鎵撳紑").SetValue(false)));
+                    Menu.EasyRangedJungle.Menu.AddItem(new MenuItem("SAwarenessEasyRangedJungleActive", "Active").SetValue(false)));
                 Menu.FowWardPlacement.Menu =
-                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐪间綅鎺ㄨ崘", "SAwarenessFowWardPlacement"));
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Fow Ward Placement", "SAwarenessFowWardPlacement"));
                 Menu.FowWardPlacement.MenuItems.Add(
-                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "鎵撳紑").SetValue(false)));
-				Menu.RealTime.Menu = 
- 		                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Real Time", "SAwarenessRealTime")); 
- 			                Menu.RealTime.MenuItems.Add( 
- 		                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "鎵撳紑").SetValue(false))); 
+                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "Active").SetValue(false)));
+                Menu.RealTime.Menu =
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Real Time", "SAwarenessRealTime"));
+                Menu.RealTime.MenuItems.Add(
+                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "Active").SetValue(false)));
+
                 Menu.GlobalSettings.Menu =
-                    menu.AddSubMenu(new LeagueSharp.Common.Menu("鍏ㄥ眬璁剧疆", "SAwarenessGlobalSettings"));
+                    menu.AddSubMenu(new LeagueSharp.Common.Menu("Global Settings", "SAwarenessGlobalSettings"));
                 Menu.GlobalSettings.MenuItems.Add(
                     Menu.GlobalSettings.Menu.AddItem(
-                        new MenuItem("SAwarenessGlobalSettingsServerChatPingActive", "姝ｅ父鑱婂ぉ/姝ｅ父Ping").SetValue(false)));
-                
+                        new MenuItem("SAwarenessGlobalSettingsServerChatPingActive", "Server Chat/Ping").SetValue(false)));
+
                 menu.AddItem(new MenuItem("By Screeder", "By Screeder V0.85"));
-				Menu.TranScreeder.Menu =
-                    menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲", "SAwarenessTranScreeder"));
-                Menu.TranScreeder.MenuItems.Add(
-                    Menu.TranScreeder.Menu.AddItem(
-                        new MenuItem("SAwarenessTranScreederQ", "L#姹夊寲缇わ細386289593")));
                 menu.AddToMainMenu();
             }
             catch (Exception)
@@ -1327,7 +1323,7 @@ namespace SAwareness
             try
             {
                 CreateMenu();
-                PrintMessage("绁炲湥鎰忚瘑 鍔犺浇鎴愬姛");
+                Game.PrintChat("SAwareness loaded!");
                 //Game.OnGameUpdate += GameOnOnGameUpdate;
                 new Thread(GameOnOnGameUpdate).Start();
                 AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
@@ -1338,11 +1334,6 @@ namespace SAwareness
             {
                 Console.WriteLine("SAwareness: " + e);
             }
-        }
-        public static void PrintMessage(string msg) // Credits to ChewyMoon, and his Brain.exe
-        {
-            Game.PrintChat("<font color=\"#FFFF00\"><b>瓒呯姹夊寲-</b></font> <font color=\"#FF0033\">" + msg + "</font>");
-			Game.PrintChat("<font color=\"#00FFFF\"><b>L#姹夊寲缇わ細386289593</b></font>");
         }
 
         private static bool threadActive = true;
