@@ -298,7 +298,7 @@ namespace SAwareness
                 Menu.Timers.MenuItems.Add(
                     Menu.Timers.Menu.AddItem(new MenuItem("SAwarenessTimersActive", "鎵撳紑").SetValue(false)));
 
-                //Not crashing     
+                //Not crashing
                 Menu.Range.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-鑼冨洿", "SAwarenessRanges"));
                 Menu.ShopRange.Menu =
                     Menu.Range.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鍟嗗簵鑼冨洿",
@@ -385,8 +385,7 @@ namespace SAwareness
                     Menu.Range.Menu.AddItem(new MenuItem("SAwarenessRangesActive", "鎵撳紑").SetValue(false)));
                
                 //Not crashing
-                                         
-                 Menu.Tracker.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-杩借釜", "SAwarenessTracker"));
+                Menu.Tracker.Menu = menu.AddSubMenu(new LeagueSharp.Common.Menu("瓒呯姹夊寲-杩借釜", "SAwarenessTracker"));
                 Menu.WaypointTracker.Menu =
                     Menu.Tracker.Menu.AddSubMenu(new LeagueSharp.Common.Menu("璺緞杩借釜",
                         "SAwarenessWaypointTracker"));
@@ -1296,7 +1295,11 @@ namespace SAwareness
                 Menu.FowWardPlacement.Menu =
                     Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("鐪间綅鎺ㄨ崘", "SAwarenessFowWardPlacement"));
                 Menu.FowWardPlacement.MenuItems.Add(
-                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "鎵撳紑").SetValue(false)));
+                    Menu.FowWardPlacement.Menu.AddItem(new MenuItem("SAwarenessFowWardPlacementActive", "Active").SetValue(false)));
+                Menu.RealTime.Menu =
+                    Menu.Misc.Menu.AddSubMenu(new LeagueSharp.Common.Menu("Real Time", "SAwarenessRealTime"));
+                Menu.RealTime.MenuItems.Add(
+                    Menu.RealTime.Menu.AddItem(new MenuItem("SAwarenessRealTimeActive", "Active").SetValue(false)));
 
                 Menu.GlobalSettings.Menu =
                     menu.AddSubMenu(new LeagueSharp.Common.Menu("鍏ㄥ眬璁剧疆", "SAwarenessGlobalSettings"));
@@ -1318,7 +1321,7 @@ namespace SAwareness
             try
             {
                 CreateMenu();
-              Game.PrintChat("SAwareness loaded!");
+                Game.PrintChat("SAwareness loaded!");
                 //Game.OnGameUpdate += GameOnOnGameUpdate;
                 new Thread(GameOnOnGameUpdate).Start();
                 AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
