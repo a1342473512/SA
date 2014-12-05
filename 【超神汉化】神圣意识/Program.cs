@@ -1309,7 +1309,8 @@ namespace SAwareness
                     Menu.GlobalSettings.Menu.AddItem(
                         new MenuItem("SAwarenessGlobalSettingsServerChatPingActive", "正常聊天/正常Ping").SetValue(false)));
                 
-                menu.AddItem(new MenuItem("By Screeder", "By Screeder V0.85"));
+                menu.AddItem(new MenuItem("By Screeder", "作者 Screeder"));
+				menu.AddItem(new MenuItem("By chaoshen", "汉化群：386289593"));
                 menu.AddToMainMenu();
             }
             catch (Exception)
