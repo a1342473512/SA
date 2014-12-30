@@ -11,14 +11,14 @@ namespace SAwareness
 
         public AutoPot()
         {
-            _pots.Add(new Pot(2037, "PotionOfGiantStrengt", Pot.PotType.Health, 120, 0)); //elixirOfFortitude
-            _pots.Add(new Pot(2039, "PotionOfBrilliance", Pot.PotType.Mana, 0, 0)); //elixirOfBrilliance            
-            _pots.Add(new Pot(2041, "ItemCrystalFlask", Pot.PotType.Both, 120, 60)); //crystalFlask
-            _pots.Add(new Pot(2009, "ItemMiniRegenPotion", Pot.PotType.Both, 80, 50)); //biscuit
-            _pots.Add(new Pot(2010, "ItemMiniRegenPotion", Pot.PotType.Both, 170, 10)); //biscuit
-            _pots.Add(new Pot(2003, "RegenerationPotion", Pot.PotType.Health, 150, 0)); //healthPotion
-            _pots.Add(new Pot(2004, "FlaskOfCrystalWater", Pot.PotType.Mana, 0, 100)); //manaPotion
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            //_pots.Add(new Pot(2037, "PotionOfGiantStrengt", Pot.PotType.Health, 120, 0)); //elixirOfFortitude
+            //_pots.Add(new Pot(2039, "PotionOfBrilliance", Pot.PotType.Mana, 0, 0)); //elixirOfBrilliance            
+            //_pots.Add(new Pot(2041, "ItemCrystalFlask", Pot.PotType.Both, 120, 60)); //crystalFlask
+            //_pots.Add(new Pot(2009, "ItemMiniRegenPotion", Pot.PotType.Both, 80, 50)); //biscuit
+            //_pots.Add(new Pot(2010, "ItemMiniRegenPotion", Pot.PotType.Both, 170, 10)); //biscuit
+            //_pots.Add(new Pot(2003, "RegenerationPotion", Pot.PotType.Health, 150, 0)); //healthPotion
+            //_pots.Add(new Pot(2004, "FlaskOfCrystalWater", Pot.PotType.Mana, 0, 100)); //manaPotion
+            //Game.OnGameUpdate += Game_OnGameUpdate;
         }
 
         ~AutoPot()

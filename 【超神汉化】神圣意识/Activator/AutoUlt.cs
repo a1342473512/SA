@@ -14,11 +14,11 @@ namespace SAwareness
 
         public AutoUlt()
         {
-            if (_ult == null)
-            {
-                Init();
-            }
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            //if (_ult == null)
+            //{
+            //    Init();
+            //}
+            //Game.OnGameUpdate += Game_OnGameUpdate;
         }
 
         ~AutoUlt()

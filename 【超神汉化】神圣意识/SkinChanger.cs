@@ -176,7 +176,8 @@ namespace SAwareness
                 "Classic",
                 "Lord",
                 "Direforge",
-                "Woad King"
+                "Woad King",
+                "Dunkmaster"
             });
 
             Skins.Add("Diana", new[]
@@ -218,7 +219,8 @@ namespace SAwareness
                 "Classic",
                 "Shadow",
                 "Masquerade",
-                "Tango"
+                "Tango",
+                "Safecracker"
             });
 
             Skins.Add("Ezreal", new[]
@@ -232,7 +234,7 @@ namespace SAwareness
                 "TPA"
             });
 
-            Skins.Add("Fiddlesticks", new[]
+            Skins.Add("FiddleSticks", new[]
             {
                 "Classic",
                 "Spectral",
@@ -394,6 +396,12 @@ namespace SAwareness
                 "Mafia"
             });
 
+            Skins.Add("Kalista", new[]
+            {
+                "Classic",
+                "Bloodmoon"
+            });
+
             Skins.Add("Karma", new[]
             {
                 "Classic",
@@ -470,7 +478,8 @@ namespace SAwareness
                 "Reindeer",
                 "Lion Dance",
                 "Deep Sea",
-                "Jurassic"
+                "Jurassic",
+                "Battlecast"
             });
 
             Skins.Add("Leblanc", new[]
@@ -478,7 +487,8 @@ namespace SAwareness
                 "Classic",
                 "Wicked",
                 "Prestigious",
-                "Mistletoe"
+                "Mistletoe",
+                "Ravenborn"
             });
 
             Skins.Add("LeeSin", new[]
@@ -602,7 +612,8 @@ namespace SAwareness
                 "Sinful Succulence",
                 "Blade Mistress",
                 "Blackthorn",
-                "Ghost Bride"
+                "Ghost Bride",
+                "Victorious"
             });
 
             Skins.Add("Nami", new[]
@@ -806,7 +817,8 @@ namespace SAwareness
                 "Ironscale",
                 "Boneclaw",
                 "Darkflame",
-                "Ice Drake"
+                "Ice Drake",
+                "Championship"
             });
 
             Skins.Add("Singed", new[]
@@ -844,7 +856,8 @@ namespace SAwareness
             {
                 "Classic",
                 "Sandscourge",
-                "Earthrune"
+                "Earthrune",
+                "Battlecast"
             });
 
             Skins.Add("Sona", new[]
@@ -862,7 +875,8 @@ namespace SAwareness
                 "Classic",
                 "Dryad",
                 "Divine",
-                "Celestine"
+                "Celestine",
+                "Reaper"
             });
 
             Skins.Add("Swain", new[]
@@ -931,7 +945,8 @@ namespace SAwareness
                 "Classic",
                 "Lil' Slugger",
                 "Junkyard",
-                "Traditional"
+                "Traditional",
+                "Constable"
             });
 
             Skins.Add("Tryndamere", new[]
@@ -965,7 +980,8 @@ namespace SAwareness
                 "Whistler Village",
                 "Medieval",
                 "Gangster",
-                "Vandal"
+                "Vandal",
+                "Pickpocket"
             });
 
             Skins.Add("Udyr", new[]
@@ -1053,7 +1069,8 @@ namespace SAwareness
                 "Classic",
                 "Thunder Lord",
                 "Northern Storm",
-                "Runeguard"
+                "Runeguard",
+                "Captain"
             });
 
             Skins.Add("Warwick", new[]
@@ -1073,7 +1090,8 @@ namespace SAwareness
                 "Classic",
                 "Volcanic",
                 "General",
-                "Jade Dragon"
+                "Jade Dragon",
+                "Underworld"
             });
 
             Skins.Add("Xerath", new[]
@@ -1170,6 +1188,7 @@ namespace SAwareness
         ~SkinChanger()
         {
             Game.OnGameUpdate -= Game_OnGameUpdate;
+            Skins = null;
         }
 
         public bool IsActive()
@@ -1183,7 +1202,7 @@ namespace SAwareness
             {
                 return Skins[championName];
             }
-            return null;
+            return new []{""};
         }
 
         public static void GenAndSendModelPacket(String champName, int skinId)

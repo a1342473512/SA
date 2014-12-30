@@ -22,15 +22,15 @@ namespace SAwareness
         {
             "GreatWraith", "Wraith", "AncientGolem", "GiantWolf", "LizardElder",
             "Golem", "Worm", "Dragon", "Wight", "TT_Spiderboss", "TTNGolem", "TTNWolf", "TTNWraith",
-            "SRU_Baron", "SRU_Dragon", "SRU_Blue", "SRU_Red", "SRU_Gromp", "SRU_Krug", "SRU_Murkwolf", "SRU_Razorbeak" //Need to check
+            "SRU_BaronSpawn", "SRU_Dragon", "SRU_Blue", "SRU_Red", "SRU_Gromp", "SRU_Krug", "SRU_Murkwolf", "SRU_Razorbeak" //Need to check
         };
 
         private readonly String[] _usefulMonsters = { "AncientGolem", "LizardElder", "Worm", "Dragon", "TT_Spiderboss", "SRU_Baron", "SRU_Dragon", "SRU_Blue", "SRU_Red" };
 
         public AutoSmite()
         {
-            Game.OnGameUpdate += Game_OnGameUpdate;
-            Drawing.OnDraw += Drawing_OnDraw;
+            //Game.OnGameUpdate += Game_OnGameUpdate;
+            //Drawing.OnDraw += Drawing_OnDraw;
         }
 
         ~AutoSmite()
@@ -151,7 +151,7 @@ namespace SAwareness
                     GamePacket gPacketT =
                         Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(minion.NetworkId, smiteSlot));
                     gPacketT.Send();
-                    ObjectManager.Player.SummonerSpellbook.CastSpell(smiteSlot, minion);
+                    ObjectManager.Player.Spellbook.CastSpell(smiteSlot, minion);
                 }
                 else
                 {
@@ -163,7 +163,7 @@ namespace SAwareness
                                 Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(minion.NetworkId,
                                     extraDamageInfo.Slot));
                             gPacketT.Send();
-                            ObjectManager.Player.SummonerSpellbook.CastSpell(smiteSlot, minion);
+                            ObjectManager.Player.Spellbook.CastSpell(smiteSlot, minion);
                             break;
 
                         case SpellType.Skillshot:
@@ -171,14 +171,14 @@ namespace SAwareness
                                 Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(0, extraDamageInfo.Slot, -1, 0, 0,
                                     minion.ServerPosition.X, minion.ServerPosition.Y));
                             gPacketT.Send();
-                            ObjectManager.Player.SummonerSpellbook.CastSpell(smiteSlot, minion);
+                            ObjectManager.Player.Spellbook.CastSpell(smiteSlot, minion.ServerPosition);
                             break;
 
                         case SpellType.Target:
                             gPacketT =
                                 Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(minion.NetworkId,
                                     extraDamageInfo.Slot));
-                            ObjectManager.Player.SummonerSpellbook.CastSpell(smiteSlot, minion);
+                            ObjectManager.Player.Spellbook.CastSpell(smiteSlot, minion);
                             gPacketT.Send();
                             break;
                     }
@@ -188,7 +188,7 @@ namespace SAwareness
                         () =>
                             Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(minion.NetworkId, smiteSlot))
                                 .Send());
-                    ObjectManager.Player.SummonerSpellbook.CastSpell(smiteSlot, minion);
+                    ObjectManager.Player.Spellbook.CastSpell(smiteSlot, minion);
                     //gPacketT = Packet.C2S.Cast.Encoded(new Packet.C2S.Cast.Struct(minion.NetworkId, (SpellSlot)slot));
                     //gPacketT.Send();
                 }
@@ -211,6 +211,14 @@ namespace SAwareness
                 case "Fizz":
                     return player.Spellbook.CanUseSpell(SpellSlot.Q) == SpellState.Ready
                         ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.Q), 550, SpellType.Target, SpellSlot.Q)
+                        : null;
+                case "Irelia":
+                    return player.Spellbook.CanUseSpell(SpellSlot.Q) == SpellState.Ready
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.Q), 650, SpellType.Target, SpellSlot.Q)
+                        : null;
+                case "Kalista":
+                    return player.Spellbook.CanUseSpell(SpellSlot.E) == SpellState.Ready
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.E), 950, SpellType.Active, SpellSlot.E)
                         : null;
                 case "Kayle":
                     return player.Spellbook.CanUseSpell(SpellSlot.Q) == SpellState.Ready
@@ -270,19 +278,19 @@ namespace SAwareness
                         : null;
                 case "Twitch":
                     return player.Spellbook.CanUseSpell(SpellSlot.E) == SpellState.Ready
-                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.E), 1200, SpellType.Active,
-                            SpellSlot.E) : null;
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.E), 1200, SpellType.Active, SpellSlot.E)
+                        : null;
                 case "Udyr":
                     return player.Spellbook.CanUseSpell(SpellSlot.R) == SpellState.Ready
-                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.R), 100, SpellType.Active,
-                            SpellSlot.R) : null;
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.R), 100, SpellType.Active, SpellSlot.R) 
+                        : null;
                 case "Veigar":
                     return player.Spellbook.CanUseSpell(SpellSlot.Q) == SpellState.Ready
-                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.Q), 650, SpellType.Active,
-                            SpellSlot.Q) : null;
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.Q), 650, SpellType.Target, SpellSlot.Q) 
+                        : null;
                 case "Vi":
                     return player.Spellbook.CanUseSpell(SpellSlot.E) == SpellState.Ready
-                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.E), 600, SpellType.Target, SpellSlot.E)
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.E), 600, SpellType.Active, SpellSlot.E)
                         : null;
                 case "Volibear":
                     return player.Spellbook.CanUseSpell(SpellSlot.W) == SpellState.Ready
@@ -294,7 +302,7 @@ namespace SAwareness
                         : null;
                 case "Xerath":
                     return player.Spellbook.CanUseSpell(SpellSlot.R) == SpellState.Ready
-                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.R), 3200 + 1200 * player.Spellbook.GetSpell(SpellSlot.R).Level, SpellType.Target, SpellSlot.R)
+                        ? new ExtraDamage(player.GetSpellDamage(minion, SpellSlot.R), 3200 + 1200 * player.Spellbook.GetSpell(SpellSlot.R).Level, SpellType.Skillshot, SpellSlot.R)
                         : null;
                 default:
                     return null;
@@ -317,7 +325,7 @@ namespace SAwareness
 
         private SpellSlot GetSmiteSlot()
         {
-            foreach (SpellDataInst spell in ObjectManager.Player.SummonerSpellbook.Spells)
+            foreach (SpellDataInst spell in ObjectManager.Player.Spellbook.Spells)
             {
                 if (spell.Name.ToLower().Contains("smite") && spell.State == SpellState.Ready)
                     return spell.Slot;

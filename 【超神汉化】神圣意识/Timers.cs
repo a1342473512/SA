@@ -12,26 +12,63 @@ namespace SAwareness
 {
     internal class ImmuneTimer //TODO: Maybe add Packetcheck
     {
-        private static readonly List<Ability> Abilities = new List<Ability>();
-        private readonly Render.Text _textF = new Render.Text("", 0, 0, 24, SharpDX.Color.Goldenrod);
-        private bool _drawActive = true;
+        private static Dictionary<Ability, Render.Text> Abilities = new Dictionary<Ability, Render.Text>();
+        //private readonly Render.Text _textF = new Render.Text("", 0, 0, 24, SharpDX.Color.Goldenrod);
+        //private bool _drawActive = true;
 
         public ImmuneTimer()
         {
-            Abilities.Add(new Ability("zhonyas_ring_activate", 2.5f)); //Zhonya
-            Abilities.Add(new Ability("Aatrox_Passive_Death_Activate", 3f)); //Aatrox Passive
-            Abilities.Add(new Ability("LifeAura", 4f)); //Zil und GA
-            Abilities.Add(new Ability("nickoftime_tar", 7f)); //Zil before death
-            Abilities.Add(new Ability("eyeforaneye", 2f)); // Kayle
-            Abilities.Add(new Ability("UndyingRage_buf", 5f)); //Tryn
-            Abilities.Add(new Ability("EggTimer", 6f)); //Anivia
+            Ability zhonyaA = new Ability("zhonyas_ring_activate", 2.5f);
+
+            Abilities.Add(new Ability("zhonyas_ring_activate", 2.5f), null); //Zhonya
+            Abilities.Add(new Ability("Aatrox_Passive_Death_Activate", 3f), null); //Aatrox Passive
+            Abilities.Add(new Ability("LifeAura", 4f), null); //Zil und GA
+            Abilities.Add(new Ability("nickoftime_tar", 7f), null); //Zil before death
+            Abilities.Add(new Ability("eyeforaneye", 2f), null); // Kayle
+            Abilities.Add(new Ability("UndyingRage_buf", 5f), null); //Tryn
+            Abilities.Add(new Ability("EggTimer", 6f), null); //Anivia
+
+            foreach(var ability in Abilities)
+            {
+                Render.Text text = new Render.Text(new Vector2(0,0), "", 28, SharpDX.Color.Goldenrod);
+                text.OutLined = true;
+                text.Centered = true;
+                text.TextUpdate = delegate
+                {
+                    float endTime = ability.Key.TimeCasted - (int)Game.ClockTime + ability.Key.Delay;
+                    var m = (float)Math.Floor(endTime / 60);
+                    var s = (float)Math.Ceiling(endTime % 60);
+                    return (s < 10 ? m + ":0" + s : m + ":" + s);
+                };
+                text.PositionUpdate = delegate
+                {
+                    Vector2 hpPos = new Vector2();
+                    if (ability.Key.Target != null)
+                    {
+                        hpPos = ability.Key.Target.HPBarPosition;
+                    }
+                    if (ability.Key.Owner != null)
+                    {
+                        hpPos = ability.Key.Owner.HPBarPosition;
+                    }
+                    hpPos.X = hpPos.X + 80;
+                    return hpPos;
+                };
+                text.VisibleCondition = delegate
+                {
+                    return Menu.Timers.GetActive() && Menu.ImmuneTimer.GetActive() && 
+                            ability.Key.Casted && ability.Key.TimeCasted > 0;
+                };
+                text.Add();
+                Abilities[ability.Key] = text;
+            }
 
             GameObject.OnCreate += Obj_AI_Base_OnCreate;
             Game.OnGameUpdate += Game_OnGameUpdate;
             //Drawing.OnDraw += Drawing_OnDraw;
-            Drawing.OnEndScene += Drawing_OnEndScene;
-            Drawing.OnPreReset += Drawing_OnPreReset;
-            Drawing.OnPostReset += Drawing_OnPostReset;
+            //Drawing.OnEndScene += Drawing_OnEndScene;
+            //Drawing.OnPreReset += Drawing_OnPreReset;
+            //Drawing.OnPostReset += Drawing_OnPostReset;
         }
 
         ~ImmuneTimer()
@@ -39,9 +76,10 @@ namespace SAwareness
             GameObject.OnCreate -= Obj_AI_Base_OnCreate;
             Game.OnGameUpdate -= Game_OnGameUpdate;
             //Drawing.OnDraw -= Drawing_OnDraw;
-            Drawing.OnEndScene -= Drawing_OnEndScene;
-            Drawing.OnPreReset -= Drawing_OnPreReset;
-            Drawing.OnPostReset -= Drawing_OnPostReset;
+            //Drawing.OnEndScene -= Drawing_OnEndScene;
+            //Drawing.OnPreReset -= Drawing_OnPreReset;
+            //Drawing.OnPostReset -= Drawing_OnPostReset;
+            Abilities = null;
         }
 
         public bool IsActive()
@@ -53,17 +91,17 @@ namespace SAwareness
         {
             if (!IsActive())
                 return;
-            foreach (Ability ability in Abilities)
+            foreach (var ability in Abilities)
             {
-                if ((ability.TimeCasted + ability.Delay) < Game.ClockTime)
+                if ((ability.Key.TimeCasted + ability.Key.Delay) < Game.ClockTime)
                 {
-                    ability.Casted = false;
-                    ability.TimeCasted = 0;
+                    ability.Key.Casted = false;
+                    ability.Key.TimeCasted = 0;
                 }
             }
         }
 
-        private void Drawing_OnEndScene(EventArgs args)
+        /*private void Drawing_OnEndScene(EventArgs args)
         {
             if (!IsActive() || !_drawActive)
                 return;
@@ -90,7 +128,7 @@ namespace SAwareness
                     _textF.OnEndScene();
                 }
             }
-        }
+        }*/
 
         private void Obj_AI_Base_OnCreate(GameObject sender, EventArgs args)
         {
@@ -100,23 +138,23 @@ namespace SAwareness
             {
                 if (!hero.IsEnemy)
                 {
-                    foreach (Ability ability in Abilities)
+                    foreach (var ability in Abilities)
                     {
-                        if (sender.Name.Contains(ability.SpellName) &&                            
+                        if (sender.Name.Contains(ability.Key.SpellName) &&                            
                             /*variable*/ Vector3.Distance(sender.Position, ObjectManager.Player.ServerPosition) <= 4000)
                         {
-                            ability.Owner = hero;
-                            ability.Casted = true;
-                            ability.TimeCasted = (int) Game.ClockTime;
+                            ability.Key.Owner = hero;
+                            ability.Key.Casted = true;
+                            ability.Key.TimeCasted = (int)Game.ClockTime;
                             if (Vector3.Distance(sender.Position, hero.ServerPosition) <= 100)
-                                ability.Target = hero;
+                                ability.Key.Target = hero;
                         }
                     }
                 }
             }
         }
 
-        private void Drawing_OnPostReset(EventArgs args)
+        /*private void Drawing_OnPostReset(EventArgs args)
         {
             _textF.OnPostReset();
             _drawActive = true;
@@ -126,7 +164,7 @@ namespace SAwareness
         {
             _textF.OnPreReset();
             _drawActive = false;
-        }
+        }*/
 
         public class Ability
         {
@@ -150,37 +188,19 @@ namespace SAwareness
     {
         private static readonly Utility.Map GMap = Utility.Map.GetMap();
         private static Inhibitor _inhibitors;
-        private static readonly List<Relic> Relics = new List<Relic>();
-        private static readonly List<Altar> Altars = new List<Altar>();
-        private static readonly List<Health> Healths = new List<Health>();
-        private static readonly List<JungleMob> JungleMobs = new List<JungleMob>();
-        private static readonly List<JungleCamp> JungleCamps = new List<JungleCamp>();
-        private static readonly List<Obj_AI_Minion> JungleMobList = new List<Obj_AI_Minion>();
-        private static readonly Dictionary<Obj_AI_Hero, Summoner> Summoners = new Dictionary<Obj_AI_Hero, Summoner>();
-
-        private readonly Font _font;
-        private bool _drawActive = true;
+        private static List<Relic> Relics = new List<Relic>();
+        private static List<Altar> Altars = new List<Altar>();
+        private static List<Health> Healths = new List<Health>();
+        private static List<JungleMob> JungleMobs = new List<JungleMob>();
+        private static List<JungleCamp> JungleCamps = new List<JungleCamp>();
+        private static List<Obj_AI_Minion> JungleMobList = new List<Obj_AI_Minion>();
+        private static Dictionary<Obj_AI_Hero, Summoner> Summoners = new Dictionary<Obj_AI_Hero, Summoner>();
 
         public Timers()
         {
-            try
-            {
-                _font = new Font(Drawing.Direct3DDevice, new System.Drawing.Font("Times New Roman", 8));
-            }
-            catch (Exception)
-            {
-                Menu.Timers.ForceDisable = true;
-                Console.WriteLine("Timer: Cannot create Font");
-                return;
-            }
             GameObject.OnCreate += Obj_AI_Base_OnCreate;
             Game.OnGameUpdate += Game_OnGameUpdate;
             Game.OnGameProcessPacket += Game_OnGameProcessPacket;
-            Drawing.OnPreReset += Drawing_OnPreReset;
-            Drawing.OnPostReset += Drawing_OnPostReset;
-            Drawing.OnEndScene += Drawing_OnEndScene;
-            AppDomain.CurrentDomain.DomainUnload += delegate { Drawing_OnPreReset(new EventArgs()); };
-            AppDomain.CurrentDomain.ProcessExit += delegate { Drawing_OnPreReset(new EventArgs()); };
             InitJungleMobs();
         }
 
@@ -189,9 +209,15 @@ namespace SAwareness
             GameObject.OnCreate -= Obj_AI_Base_OnCreate;
             Game.OnGameUpdate -= Game_OnGameUpdate;
             Game.OnGameProcessPacket -= Game_OnGameProcessPacket;
-            Drawing.OnPreReset -= Drawing_OnPreReset;
-            Drawing.OnPostReset -= Drawing_OnPostReset;
-            Drawing.OnEndScene -= Drawing_OnEndScene;
+            
+            _inhibitors = null;
+            Relics = null;
+            Altars = null;
+            Healths = null;
+            JungleMobs = null;
+            JungleCamps = null;
+            JungleMobList = null;
+            Summoners = null;
         }
 
         public bool IsActive()
@@ -247,215 +273,6 @@ namespace SAwareness
                 }
             }
             return true;
-        }
-
-        private void Drawing_OnPostReset(EventArgs args)
-        {
-            if (Drawing.Direct3DDevice == null || Drawing.Direct3DDevice.IsDisposed)
-                return;
-            _font.OnResetDevice();
-            _drawActive = true;
-        }
-
-        private void Drawing_OnPreReset(EventArgs args)
-        {
-            _font.OnLostDevice();
-            _drawActive = false;
-        }
-
-        private void Drawing_OnEndScene(EventArgs args)
-        {
-            if (!IsActive() || !_drawActive)
-                return;
-
-            if (Menu.JungleTimer.GetActive())
-            {
-                foreach (JungleCamp jungleCamp in JungleCamps)
-                {
-                    if (jungleCamp.NextRespawnTime <= 0 || jungleCamp.MapType != GMap._MapType)
-                        continue;
-                    Vector2 sPos = Drawing.WorldToMinimap(jungleCamp.MinimapPosition);
-                    DirectXDrawer.DrawText(_font, (jungleCamp.NextRespawnTime - (int) Game.ClockTime).ToString(),
-                        (int) sPos[0], (int) sPos[1], SharpDX.Color.White);
-                    int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
-                    if (!jungleCamp.Called && jungleCamp.NextRespawnTime - (int) Game.ClockTime <= time &&
-                        jungleCamp.NextRespawnTime - (int) Game.ClockTime >= time - 1)
-                    {
-                        jungleCamp.Called = true;
-                        PingAndCall(jungleCamp.Name + " respawns in " + time + " seconds!", jungleCamp.MinimapPosition);
-                    }
-                }
-            }
-
-            if (Menu.AltarTimer.GetActive())
-            {
-                foreach (Altar altar in Altars)
-                {
-                    if (altar.Locked)
-                    {
-                        if (altar.NextRespawnTime <= 0 || altar.MapType != GMap._MapType)
-                            continue;
-                        Vector2 sPos = Drawing.WorldToMinimap(altar.Obj.ServerPosition);
-                        DirectXDrawer.DrawText(_font, (altar.NextRespawnTime - (int) Game.ClockTime).ToString(), (int) sPos[0],
-                            (int) sPos[1], SharpDX.Color.White);
-                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
-                        if (!altar.Called && altar.NextRespawnTime - (int) Game.ClockTime <= time &&
-                            altar.NextRespawnTime - (int) Game.ClockTime >= time - 1)
-                        {
-                            altar.Called = true;
-                            PingAndCall(altar.Name + " unlocks in " + time + " seconds!", altar.Obj.ServerPosition);
-                        }
-                    }
-                }
-            }
-
-            if (Menu.RelictTimer.GetActive())
-            {
-                foreach (Relic relic in Relics)
-                {
-                    if (relic.Locked)
-                    {
-                        if (relic.NextRespawnTime <= 0 || relic.MapType != GMap._MapType)
-                            continue;
-                        Vector2 sPos = Drawing.WorldToMinimap(relic.MinimapPosition);
-                        DirectXDrawer.DrawText(_font, (relic.NextRespawnTime - (int) Game.ClockTime).ToString(), (int) sPos[0],
-                            (int) sPos[1], SharpDX.Color.White);
-                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
-                        if (!relic.Called && relic.NextRespawnTime - (int) Game.ClockTime <= time &&
-                            relic.NextRespawnTime - (int) Game.ClockTime >= time - 1)
-                        {
-                            relic.Called = true;
-                            PingAndCall(relic.Name + " respawns in " + time + " seconds!", relic.MinimapPosition);
-                        }
-                    }
-                }
-            }
-
-            if (Menu.InhibitorTimer.GetActive())
-            {
-                if (_inhibitors.Inhibitors == null)
-                    return;
-                foreach (Inhibitor inhibitor in _inhibitors.Inhibitors)
-                {
-                    if (inhibitor.Locked)
-                    {
-                        if (inhibitor.NextRespawnTime <= 0)
-                            continue;
-                        Vector2 sPos = Drawing.WorldToMinimap(inhibitor.Obj.Position);
-                        DirectXDrawer.DrawText(_font, (inhibitor.NextRespawnTime - (int) Game.ClockTime).ToString(),
-                            (int) sPos[0], (int) sPos[1], SharpDX.Color.White);
-                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
-                        if (!inhibitor.Called && inhibitor.NextRespawnTime - (int) Game.ClockTime <= time &&
-                            inhibitor.NextRespawnTime - (int) Game.ClockTime >= time - 1)
-                        {
-                            inhibitor.Called = true;
-                            PingAndCall("Inhibitor respawns in " + time + " seconds!", inhibitor.Obj.Position);
-                        }
-                    }
-                }
-            }
-
-            if (Menu.HealthTimer.GetActive())
-            {
-                foreach (Health health in Healths)
-                {
-                    if (health.Locked)
-                    {
-                        if (health.NextRespawnTime - (int) Game.ClockTime <= 0 || health.MapId != GMap._MapType)
-                            continue;
-                        Vector2 sPos = Drawing.WorldToMinimap(health.Position);
-                        DirectXDrawer.DrawText(_font, (health.NextRespawnTime - (int) Game.ClockTime).ToString(),
-                            (int) sPos[0], (int) sPos[1], SharpDX.Color.White);
-                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
-                        if (!health.Called && health.NextRespawnTime - (int) Game.ClockTime <= time &&
-                            health.NextRespawnTime - (int) Game.ClockTime >= time - 1)
-                        {
-                            health.Called = true;
-                            PingAndCall("Heal respawns in " + time + " seconds!", health.Position);
-                        }
-                    }
-                }
-            }
-
-            if (Menu.SummonerTimer.GetActive())
-            {
-                foreach (var hero in Summoners)
-                {
-                    Obj_AI_Hero enemy = hero.Key;
-                    for (int i = 0; i < enemy.SummonerSpellbook.Spells.Count(); i++)
-                    {
-                        SpellDataInst spellData = enemy.SummonerSpellbook.Spells[i];
-                        if (hero.Value.Called[i])
-                        {
-                            if (Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value < spellData.CooldownExpires - Game.ClockTime)
-                            {
-                                hero.Value.Called[i] = false;
-                            }
-                        }
-                        if (!hero.Value.Called[i] && Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value > spellData.CooldownExpires - Game.ClockTime)
-                        {
-                            hero.Value.Called[i] = true;
-                            String text = enemy.ChampionName + " ";
-                            switch (spellData.Name.ToLower())
-                            {
-                                case "summonerbarrier":
-                                    text = text + "Barrier";
-                                    break;
-
-                                case "summonerboost":
-                                    text = text + "Cleanse";
-                                    break;
-
-                                case "summonerclairvoyance":
-                                    text = text + "Clairvoyance";
-                                    break;
-
-                                case "summonerdot":
-                                    text = text + "Ignite";
-                                    break;
-
-                                case "summonerexhaust":
-                                    text = text + "Exhaust";
-                                    break;
-
-                                case "summonerflash":
-                                    text = text + "Flash";
-                                    break;
-
-                                case "summonerhaste":
-                                    text = text + "Ghost";
-                                    break;
-
-                                case "summonerheal":
-                                    text = text + "Heal";
-                                    break;
-
-                                case "summonermana":
-                                    text = text + "Clarity";
-                                    break;
-
-                                case "summonerodingarrison":
-                                    text = text + "Garrison";
-                                    break;
-
-                                case "summonerrevive":
-                                    text = text + "Revive";
-                                    break;
-
-                                case "summonersmite":
-                                    text = text + "Smite";
-                                    break;
-
-                                case "summonerteleport":
-                                    text = text + "Teleport";
-                                    break;
-                            }
-                            text = text + " " + Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value + " sec";
-                            PingAndCall(text, new Vector3(), true, false);
-                        }   
-                    }
-                }
-            }
         }
 
         private void Obj_AI_Base_OnCreate(GameObject sender, EventArgs args)
@@ -561,7 +378,7 @@ namespace SAwareness
             JungleMobs.Add(new JungleMob("SRU_Razorbeak", null, true, false, false, Utility.Map.MapType.SummonersRift));
             JungleMobs.Add(new JungleMob("SRU_Red", null, true, true, false, Utility.Map.MapType.SummonersRift));
             JungleMobs.Add(new JungleMob("SRU_Krug", null, true, false, false, Utility.Map.MapType.SummonersRift));
-            JungleMobs.Add(new JungleMob("SRU_Baron", null, true, true, true, Utility.Map.MapType.SummonersRift));
+            JungleMobs.Add(new JungleMob("SRU_BaronSpawn", null, true, true, true, Utility.Map.MapType.SummonersRift));
             JungleMobs.Add(new JungleMob("SRU_Dragon", null, true, false, true, Utility.Map.MapType.SummonersRift));
             JungleMobs.Add(new JungleMob("SRU_Gromp", null, true, false, false, Utility.Map.MapType.SummonersRift));
             JungleMobs.Add(new JungleMob("SRU_Crab", null, true, false, false, Utility.Map.MapType.SummonersRift));
@@ -814,7 +631,7 @@ namespace SAwareness
 
             if (Menu.AltarTimer.GetActive())
             {
-                var altarDestroyed = new Altar(null, null);
+                Altar altarDestroyed = null;
                 foreach (Altar altar in Altars)
                 {
                     if (altar.Obj.IsValid)
@@ -848,7 +665,7 @@ namespace SAwareness
                         }
                     }
                 }
-                if (Altars.Remove(altarDestroyed))
+                if (altarDestroyed != null && Altars.Remove(altarDestroyed))
                 {
                 }
                 foreach (Obj_AI_Minion altar in ObjectManager.Get<Obj_AI_Minion>())
@@ -911,7 +728,7 @@ namespace SAwareness
 
             if (Menu.HealthTimer.GetActive())
             {
-                var healthDestroyed = new Health(null);
+                Health healthDestroyed = null;
                 foreach (Health health in Healths)
                 {
                     if (health.Obj.IsValid)
@@ -934,7 +751,7 @@ namespace SAwareness
                             }
                         }
                 }
-                if (Healths.Remove(healthDestroyed))
+                if (healthDestroyed != null && Healths.Remove(healthDestroyed))
                 {
                 }
                 foreach (Obj_AI_Minion health in ObjectManager.Get<Obj_AI_Minion>())
@@ -954,7 +771,7 @@ namespace SAwareness
 
             if (Menu.InhibitorTimer.GetActive())
             {
-                if (_inhibitors.Inhibitors == null)
+                if (_inhibitors == null || _inhibitors.Inhibitors == null)
                     return;
                 foreach (Inhibitor inhibitor in _inhibitors.Inhibitors)
                 {
@@ -968,6 +785,182 @@ namespace SAwareness
                     {
                         inhibitor.Locked = true;
                         inhibitor.NextRespawnTime = inhibitor.RespawnTime + (int) Game.ClockTime;
+                    }
+                }
+            }
+
+            /////
+             
+            if (Menu.JungleTimer.GetActive())
+            {
+                foreach (JungleCamp jungleCamp in JungleCamps)
+                {
+                    if (jungleCamp.NextRespawnTime <= 0 || jungleCamp.MapType != GMap._MapType)
+                        continue;
+                    int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
+                    if (!jungleCamp.Called && jungleCamp.NextRespawnTime - (int)Game.ClockTime <= time &&
+                        jungleCamp.NextRespawnTime - (int)Game.ClockTime >= time - 1)
+                    {
+                        jungleCamp.Called = true;
+                        PingAndCall(jungleCamp.Name + " respawns in " + time + " seconds!", jungleCamp.MinimapPosition);
+                    }
+                }
+            }
+
+            if (Menu.AltarTimer.GetActive())
+            {
+                foreach (Altar altar in Altars)
+                {
+                    if (altar.Locked)
+                    {
+                        if (altar.NextRespawnTime <= 0 || altar.MapType != GMap._MapType)
+                            continue;
+                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
+                        if (!altar.Called && altar.NextRespawnTime - (int)Game.ClockTime <= time &&
+                            altar.NextRespawnTime - (int)Game.ClockTime >= time - 1)
+                        {
+                            altar.Called = true;
+                            PingAndCall(altar.Name + " unlocks in " + time + " seconds!", altar.Obj.ServerPosition);
+                        }
+                    }
+                }
+            }
+
+            if (Menu.RelictTimer.GetActive())
+            {
+                foreach (Relic relic in Relics)
+                {
+                    if (relic.Locked)
+                    {
+                        if (relic.NextRespawnTime <= 0 || relic.MapType != GMap._MapType)
+                            continue;
+                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
+                        if (!relic.Called && relic.NextRespawnTime - (int)Game.ClockTime <= time &&
+                            relic.NextRespawnTime - (int)Game.ClockTime >= time - 1)
+                        {
+                            relic.Called = true;
+                            PingAndCall(relic.Name + " respawns in " + time + " seconds!", relic.MinimapPosition);
+                        }
+                    }
+                }
+            }
+
+            if (Menu.InhibitorTimer.GetActive())
+            {
+                if (_inhibitors.Inhibitors == null)
+                    return;
+                foreach (Inhibitor inhibitor in _inhibitors.Inhibitors)
+                {
+                    if (inhibitor.Locked)
+                    {
+                        if (inhibitor.NextRespawnTime <= 0)
+                            continue;
+                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
+                        if (!inhibitor.Called && inhibitor.NextRespawnTime - (int)Game.ClockTime <= time &&
+                            inhibitor.NextRespawnTime - (int)Game.ClockTime >= time - 1)
+                        {
+                            inhibitor.Called = true;
+                            PingAndCall("Inhibitor respawns in " + time + " seconds!", inhibitor.Obj.Position);
+                        }
+                    }
+                }
+            }
+
+            if (Menu.HealthTimer.GetActive())
+            {
+                foreach (Health health in Healths)
+                {
+                    if (health.Locked)
+                    {
+                        if (health.NextRespawnTime - (int)Game.ClockTime <= 0 || health.MapType != GMap._MapType)
+                            continue;
+                        int time = Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value;
+                        if (!health.Called && health.NextRespawnTime - (int)Game.ClockTime <= time &&
+                            health.NextRespawnTime - (int)Game.ClockTime >= time - 1)
+                        {
+                            health.Called = true;
+                            PingAndCall("Heal respawns in " + time + " seconds!", health.Position);
+                        }
+                    }
+                }
+            }
+
+            if (Menu.SummonerTimer.GetActive())
+            {
+                foreach (var hero in Summoners)
+                {
+                    Obj_AI_Hero enemy = hero.Key;
+                    for (int i = 0; i < enemy.Spellbook.Spells.Count(); i++)
+                    {
+                        SpellDataInst spellData = enemy.Spellbook.Spells[i];
+                        if (hero.Value.Called[i])
+                        {
+                            if (Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value < spellData.CooldownExpires - Game.ClockTime)
+                            {
+                                hero.Value.Called[i] = false;
+                            }
+                        }
+                        if (!hero.Value.Called[i] && Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value > spellData.CooldownExpires - Game.ClockTime)
+                        {
+                            hero.Value.Called[i] = true;
+                            String text = enemy.ChampionName + " ";
+                            switch (spellData.Name.ToLower())
+                            {
+                                case "summonerbarrier":
+                                    text = text + "Barrier";
+                                    break;
+
+                                case "summonerboost":
+                                    text = text + "Cleanse";
+                                    break;
+
+                                case "summonerclairvoyance":
+                                    text = text + "Clairvoyance";
+                                    break;
+
+                                case "summonerdot":
+                                    text = text + "Ignite";
+                                    break;
+
+                                case "summonerexhaust":
+                                    text = text + "Exhaust";
+                                    break;
+
+                                case "summonerflash":
+                                    text = text + "Flash";
+                                    break;
+
+                                case "summonerhaste":
+                                    text = text + "Ghost";
+                                    break;
+
+                                case "summonerheal":
+                                    text = text + "Heal";
+                                    break;
+
+                                case "summonermana":
+                                    text = text + "Clarity";
+                                    break;
+
+                                case "summonerodingarrison":
+                                    text = text + "Garrison";
+                                    break;
+
+                                case "summonerrevive":
+                                    text = text + "Revive";
+                                    break;
+
+                                case "smite":
+                                    text = text + "Smite";
+                                    break;
+
+                                case "summonerteleport":
+                                    text = text + "Teleport";
+                                    break;
+                            }
+                            text = text + " " + Menu.Timers.GetMenuItem("SAwarenessTimersRemindTime").GetValue<Slider>().Value + " sec";
+                            PingAndCall(text, new Vector3(), true, false);
+                        }
                     }
                 }
             }
@@ -1049,6 +1042,12 @@ namespace SAwareness
             public int RespawnTime;
             public int SpawnTime;
             public String[] UnlockNames;
+            public Render.Text Text;
+
+            public Altar()
+            {
+                
+            }
 
             public Altar(String name, Obj_AI_Minion obj)
             {
@@ -1060,6 +1059,25 @@ namespace SAwareness
                 NextRespawnTime = 0;
                 MapType = Utility.Map.MapType.TwistedTreeline;
                 Called = false;
+                Text = new Render.Text(0, 0, "", 12, new ColorBGRA(Color4.White));
+                Text.TextUpdate = delegate
+                {
+                    return (NextRespawnTime - (int)Game.ClockTime).ToString();
+                };
+                Text.PositionUpdate = delegate
+                {
+                    if (Obj.ServerPosition.Length().Equals(0.0f))
+                        return new Vector2(0, 0);
+                    Vector2 sPos = Drawing.WorldToMinimap(Obj.ServerPosition);
+                    return new Vector2(sPos.X, sPos.Y);
+                };
+                Text.VisibleCondition = sender =>
+                {
+                    return Menu.Timers.GetActive() && Menu.JungleTimer.GetActive() && NextRespawnTime > 0 && MapType == GMap._MapType && Text.X != 0;
+                };
+                Text.OutLined = true;
+                Text.Centered = true;
+                Text.Add(); 
             }
         }
 
@@ -1067,12 +1085,18 @@ namespace SAwareness
         {
             public bool Called;
             public bool Locked;
-            public Utility.Map.MapType MapId;
+            public Utility.Map.MapType MapType;
             public int NextRespawnTime;
             public Obj_AI_Minion Obj;
             public Vector3 Position;
             public int RespawnTime;
             public int SpawnTime;
+            public Render.Text Text;
+
+            public Health()
+            {
+                
+            }
 
             public Health(Obj_AI_Minion obj)
             {
@@ -1085,8 +1109,25 @@ namespace SAwareness
                 RespawnTime = 40;
                 NextRespawnTime = 0;
                 Locked = false;
-                MapId = Utility.Map.MapType.HowlingAbyss;
+                MapType = Utility.Map.MapType.HowlingAbyss;
                 Called = false;
+                Text = new Render.Text(0, 0, "", 12, new ColorBGRA(Color4.White));
+                Text.TextUpdate = delegate
+                {
+                    return (NextRespawnTime - (int)Game.ClockTime).ToString();
+                };
+                Text.PositionUpdate = delegate
+                {
+                    Vector2 sPos = Drawing.WorldToMinimap(Position);
+                    return new Vector2(sPos.X, sPos.Y);
+                };
+                Text.VisibleCondition = sender =>
+                {
+                    return Menu.Timers.GetActive() && Menu.JungleTimer.GetActive() && NextRespawnTime > 0 && MapType == GMap._MapType;
+                };
+                Text.OutLined = true;
+                Text.Centered = true;
+                Text.Add(); 
             }
         }
 
@@ -1099,6 +1140,7 @@ namespace SAwareness
             public Obj_BarracksDampener Obj;
             public int RespawnTime;
             public int SpawnTime;
+            public Render.Text Text;
 
             public Inhibitor()
             {
@@ -1113,6 +1155,25 @@ namespace SAwareness
                 NextRespawnTime = 0;
                 Locked = false;
                 Called = false;
+                Text = new Render.Text(0, 0, "", 12, new ColorBGRA(Color4.White));
+                Text.TextUpdate = delegate
+                {
+                    return (NextRespawnTime - (int)Game.ClockTime).ToString();
+                };
+                Text.PositionUpdate = delegate
+                {
+                    if (Obj.Position.Length().Equals(0.0f))
+                        return new Vector2(0, 0);
+                    Vector2 sPos = Drawing.WorldToMinimap(Obj.Position);
+                    return new Vector2(sPos.X, sPos.Y);
+                };
+                Text.VisibleCondition = sender =>
+                {
+                    return Menu.Timers.GetActive() && Menu.JungleTimer.GetActive() && NextRespawnTime > 0;
+                };
+                Text.OutLined = true;
+                Text.Centered = true;
+                Text.Add(); 
             }
         }
 
@@ -1129,6 +1190,7 @@ namespace SAwareness
             public int RespawnTime;
             public int SpawnTime;
             public GameObjectTeam Team;
+            public Render.Text Text;
 
             public JungleCamp(String name, GameObjectTeam team, int campId, int spawnTime, int respawnTime,
                 Utility.Map.MapType mapType, Vector3 mapPosition, Vector3 minimapPosition, JungleMob[] creeps)
@@ -1144,6 +1206,23 @@ namespace SAwareness
                 Creeps = creeps;
                 NextRespawnTime = 0;
                 Called = false;
+                Text = new Render.Text(0, 0, "", 12, new ColorBGRA(Color4.White));
+                Text.TextUpdate = delegate
+                {
+                    return (NextRespawnTime - (int)Game.ClockTime).ToString();
+                };
+                Text.PositionUpdate = delegate
+                {
+                    Vector2 sPos = Drawing.WorldToMinimap(MinimapPosition);
+                    return new Vector2(sPos.X, sPos.Y);
+                };
+                Text.VisibleCondition = sender =>
+                {
+                    return Menu.Timers.GetActive() && Menu.JungleTimer.GetActive() && NextRespawnTime > 0 && MapType == GMap._MapType;
+                };
+                Text.OutLined = true;
+                Text.Centered = true;
+                Text.Add();             
             }
         }
 
@@ -1182,6 +1261,7 @@ namespace SAwareness
             public int RespawnTime;
             public int SpawnTime;
             public GameObjectTeam Team;
+            public Render.Text Text;
 
             public Relic(string name, String objectName, GameObjectTeam team, Obj_AI_Minion obj, int spawnTime,
                 int respawnTime, Vector3 mapPosition, Vector3 minimapPosition)
@@ -1198,6 +1278,23 @@ namespace SAwareness
                 MapType = Utility.Map.MapType.CrystalScar;
                 NextRespawnTime = 0;
                 Called = false;
+                Text = new Render.Text(0, 0, "", 12, new ColorBGRA(Color4.White));
+                Text.TextUpdate = delegate
+                {
+                    return (NextRespawnTime - (int)Game.ClockTime).ToString();
+                };
+                Text.PositionUpdate = delegate
+                {
+                    Vector2 sPos = Drawing.WorldToMinimap(MinimapPosition);
+                    return new Vector2(sPos.X, sPos.Y);
+                };
+                Text.VisibleCondition = sender =>
+                {
+                    return Menu.Timers.GetActive() && Menu.JungleTimer.GetActive() && NextRespawnTime > 0 && MapType == GMap._MapType;
+                };
+                Text.OutLined = true;
+                Text.Centered = true;
+                Text.Add(); 
             }
         }
     }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using LeagueSharp;
 using LeagueSharp.Common;
+using SharpDX.Direct3D9;
 
 namespace SAwareness
 {
@@ -11,17 +12,21 @@ namespace SAwareness
     {
         private int[] _priority = {0, 0, 0, 0};
         private int[] _sequence;
-        private int _useMode;
+        private static int _useMode;
+        private static List<SequenceLevler> sLevler = new List<SequenceLevler>();
 
         public AutoLevler()
         {
             //LoadLevelFile();
             Game.OnGameUpdate += Game_OnGameUpdate;
+            AppDomain.CurrentDomain.DomainUnload += delegate { WriteLevelFile(); };
+            AppDomain.CurrentDomain.ProcessExit += delegate { WriteLevelFile(); };
         }
 
         ~AutoLevler()
         {
             Game.OnGameUpdate -= Game_OnGameUpdate;
+            sLevler = null;
         }
 
         public bool IsActive()
@@ -114,20 +119,56 @@ namespace SAwareness
             _sequence[3] = priorityR;
         }
 
-        private void LoadLevelFile()
+        private static void SaveSequence(/*GUI Sequenz übergeben*/)
         {
-            //TODO: Read Level File for sequence leveling.
-            string loc = Assembly.GetExecutingAssembly().Location;
+            Dictionary<int, SpellSlot> dummy = new Dictionary<int, SpellSlot>();
+            String name = ObjectManager.Player.ChampionName;
+            foreach (SequenceLevler levler in sLevler)
+            {
+                if (levler.Name.Contains(ObjectManager.Player.ChampionName))
+                {
+                    name = levler.Name;
+                }
+            }
+            int value = Convert.ToInt32(name[name.Length - 1]);
+            name = name.Remove(name.Length - 1);
+            name += value.ToString();
+            sLevler.Add(new SequenceLevler(name, dummy));
+        }
+
+        private static void WriteLevelFile()
+        {
+            string loc = Config.LeagueSharpDirectory;
             loc = loc.Remove(loc.LastIndexOf("\\", StringComparison.Ordinal));
             loc = loc + "\\Config\\SAwareness\\autolevel.conf";
-            if (!File.Exists(loc))
-            {
-                //Download.DownloadFile("127.0.0.1", loc);
-            }
             try
             {
+                StreamWriter sw = File.CreateText(loc);
+                sw.Close();
+                Serialize.Save(loc, sLevler);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Couldn't save autolevel.conf.");
+            }
+        }
+
+        private static void LoadLevelFile()
+        {
+            string loc = Config.LeagueSharpDirectory;
+            loc = loc.Remove(loc.LastIndexOf("\\", StringComparison.Ordinal));
+            loc = loc + "\\Config\\SAwareness\\autolevel.conf";
+            try
+            {
+            if (!File.Exists(loc))
+            {
+                StreamWriter sw = File.CreateText(loc);
+                sw.Close();
+            }
+            
                 StreamReader sr = File.OpenText(loc);
-                ReadLevelFile(sr);
+                ReadLevelFile(loc);
+                sr.Close();
             }
             catch (Exception)
             {
@@ -136,29 +177,42 @@ namespace SAwareness
             }
         }
 
-        private void ReadLevelFile(StreamReader streamReader)
+        private static void ReadLevelFile(String loc)
         {
-            var sequence = new int[18];
-            while (!streamReader.EndOfStream)
+            //sLevler = Serialize.Load<SequenceLevler>(loc);
+        }
+
+        public static StringList GetBuildNames()
+        {
+            StringList list = new StringList();
+            list.SList = new[] {""};
+            //List<String> elements = new List<string>();
+            //LoadLevelFile();
+            //foreach (SequenceLevler levler in sLevler)
+            //{
+            //    if (levler.Name.Contains(ObjectManager.Player.ChampionName))
+            //    {
+            //        elements.Add(levler.Name);
+            //    }
+            //}
+            //list = new StringList(elements.ToArray());
+            return list;
+        }
+
+        private void DeleteSequence()
+        {
+            StringList list = Menu.AutoLevler.GetMenuSettings("SAwarenessAutoLevlerSequence").GetMenuItem("SAwarenessAutoLevlerSequenceLoadChoice").GetValue<StringList>();
+            if (Menu.AutoLevler.GetMenuSettings("SAwarenessAutoLevlerSequence")
+                .GetMenuItem("SAwarenessAutoLevlerSequenceDeleteBuild").GetValue<bool>())
             {
-                String line = streamReader.ReadLine();
-                String champion = "";
-                if (line != null && line.Length > line.IndexOf("="))
-                    champion = line.Remove(line.IndexOf("="));
-                if (!champion.Contains(ObjectManager.Player.ChampionName))
-                    continue;
-                if (line != null)
+                foreach (SequenceLevler levler in sLevler.ToArray())
                 {
-                    string temp = line.Remove(0, line.IndexOf("=") + 2);
-                    for (int i = 0; i < 18; i++)
+                    if (levler.Name.Contains(list.SList[list.SelectedIndex]))
                     {
-                        sequence[i] = Int32.Parse(temp.Remove(1));
-                        temp = temp.Remove(0, 1);
+                        sLevler.Remove(levler);
                     }
                 }
-                break;
             }
-            _sequence = sequence;
         }
 
         private SpellSlot GetSpellSlot(int id)
@@ -252,6 +306,27 @@ namespace SAwareness
             return spellSlot[ObjectManager.Player.Level - 1];
         }
 
+        private SpellSlot ConvertSpellSlot(String spell)
+        {
+            switch (spell)
+            {
+                case "Q":
+                    return SpellSlot.Q;
+
+                case "W":
+                    return SpellSlot.W;
+
+                case "E":
+                    return SpellSlot.E;
+
+                case "R":
+                    return SpellSlot.R;
+
+                default:
+                    return SpellSlot.Unknown;
+            }
+        }
+
         //private List<SpellSlot> SortAlgo(List<int> listOld, List<SpellSlot> listNew)
         //{
         //    int highestPriority = -1;
@@ -269,5 +344,31 @@ namespace SAwareness
         //        listNew = SortAlgo(listOld, listNew);
         //    return listNew;
         //}
+
+        [Serializable]
+        private class SequenceLevler
+        {
+            public String Name;
+            public Dictionary<int, SpellSlot> Sequence = new Dictionary<int, SpellSlot>();
+
+            public SequenceLevler(String name, Dictionary<int, SpellSlot> sequence)
+            {
+                Name = name;
+                Sequence = sequence;
+            }
+        }
+
+        private class SequenceLevlerGUI
+        {
+            public Render.Sprite MainFrame;
+            public Render.Sprite Save;
+            public Render.Sprite[] Skill = new Render.Sprite[18];
+
+            public SequenceLevlerGUI()
+            {
+                //MainFrame = new Render.Sprite();
+                //texture = Texture.FromMemory(Drawing.Direct3DDevice, MyResources[name.ToLower()]);
+            }
+        }
     }
 }

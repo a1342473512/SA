@@ -16,7 +16,8 @@ namespace SAwareness
 
     internal class DisconnectDetector
     {
-        private readonly Dictionary<Obj_AI_Hero, bool> _disconnects = new Dictionary<Obj_AI_Hero, bool>();
+        private Dictionary<Obj_AI_Hero, bool> _disconnects = new Dictionary<Obj_AI_Hero, bool>();
+        private Dictionary<Obj_AI_Hero, bool> _reconnects = new Dictionary<Obj_AI_Hero, bool>();
 
         public DisconnectDetector()
         {
@@ -26,6 +27,8 @@ namespace SAwareness
         ~DisconnectDetector()
         {
             Game.OnGameProcessPacket -= Game_OnGameProcessPacket;
+            _disconnects = null;
+            _reconnects = null;
         }
 
         public bool IsActive()
@@ -73,6 +76,43 @@ namespace SAwareness
             catch (Exception ex)
             {
                 Console.WriteLine("DisconnectProcess: " + ex);
+            }
+            try
+            {
+                var reader = new BinaryReader(new MemoryStream(args.PacketData));
+                byte packetId = reader.ReadByte(); //PacketId
+                if (packetId != Packet.S2C.PlayerReconnected.Header)
+                    return;
+                Packet.S2C.PlayerReconnected.Struct reconnect = Packet.S2C.PlayerReconnected.Decoded(args.PacketData);
+                if (reconnect.Player == null)
+                    return;
+                if (_reconnects.ContainsKey(reconnect.Player))
+                {
+                    _reconnects[reconnect.Player] = true;
+                }
+                else
+                {
+                    _reconnects.Add(reconnect.Player, true);
+                }
+                if (
+                    Menu.DisconnectDetector.GetMenuItem("SAwarenessDisconnectDetectorChatChoice")
+                        .GetValue<StringList>()
+                        .SelectedIndex == 1)
+                {
+                    Game.PrintChat("Champion " + reconnect.Player.ChampionName + " has reconnected!");
+                }
+                else if (
+                    Menu.DisconnectDetector.GetMenuItem("SAwarenessDisconnectDetectorChatChoice")
+                        .GetValue<StringList>()
+                        .SelectedIndex == 2 &&
+                    Menu.GlobalSettings.GetMenuItem("SAwarenessGlobalSettingsServerChatPingActive").GetValue<bool>())
+                {
+                    Game.Say("Champion " + reconnect.Player.ChampionName + " has reconnected!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("ReconnectProcess: " + ex);
             }
         }
     }
@@ -122,16 +162,16 @@ namespace SAwareness
 
         public TurnAround()
         {
-            Game.OnGameUpdate += Game_OnGameUpdate;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Hero_OnProcessSpellCast;
             Game.OnGameSendPacket += Game_OnGameSendPacket;
         }
 
         ~TurnAround()
         {
-            Game.OnGameUpdate -= Game_OnGameUpdate;
             Obj_AI_Base.OnProcessSpellCast -= Obj_AI_Hero_OnProcessSpellCast;
             Game.OnGameSendPacket -= Game_OnGameSendPacket;
+            _lastMove = new Vector2();
+            _lastTime = 0;
         }
 
         public bool IsActive()
@@ -213,17 +253,11 @@ namespace SAwareness
                 Console.WriteLine("MovementSend: " + ex);
             }
         }
-
-        private void Game_OnGameUpdate(EventArgs args)
-        {
-            if (!IsActive())
-                return;
-        }
     }
 
     internal class AutoJump //DONT PLACE COUR CURSOR ON A WALL IT WILL FAIL
     {
-        private readonly Spell _jumpSpell;
+        private Spell _jumpSpell;
         private readonly bool _onlyAlly;
         private readonly bool _onlyEnemy;
         private readonly bool _useWard = true;
@@ -262,6 +296,9 @@ namespace SAwareness
         ~AutoJump()
         {
             Game.OnGameUpdate -= Game_OnGameUpdate;
+            GameObject.OnCreate -= Obj_AI_Base_OnCreate;
+            _jumpSpell = null;
+            _lastCast = 0;
         }
 
         public bool IsActive()
@@ -301,7 +338,7 @@ namespace SAwareness
                 if (_lastCast + 1 > Game.Time)
                     return;
                 InventorySlot slot = Wards.GetWardSlot();
-                slot.UseItem(Game.CursorPos);
+                ObjectManager.Player.Spellbook.CastSpell(slot.SpellSlot, Game.CursorPos);
                 _jumpSpell.Cast(Game.CursorPos, true);
                 _lastCast = Game.Time;
             }
@@ -590,7 +627,9 @@ namespace SAwareness
 
         ~FowWardPlacement()
         {
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            Game.OnGameUpdate -= Game_OnGameUpdate;
+            enemiesUsed = null;
+            enemiesRefilled = null;
         }
 
         public bool IsActive()
@@ -613,8 +652,8 @@ namespace SAwareness
                     {
                         if ((int)item.Id == wardItem.Id && wardItem.Type != Wards.WardType.Temp && wardItem.Type != Wards.WardType.TempVision && hero.Spellbook.CanUseSpell(item.SpellSlot) == SpellState.Ready)
                         {
-                            if (item.Charges < wardItem.Charges || item.Stacks < wardItem.Stacks)
-                                Console.Write("");
+                            /*if (item.Charges < wardItem.Charges || item.Stacks < wardItem.Stacks)
+                                Console.Write("");*/
                             if (item.Charges > 0 ? item.Charges >= wardItem.Charges : false || item.Stacks >= wardItem.Stacks) //Check for StackItems etc fail
                             {
                                 enemy.Value.Remove(wardItem);
@@ -720,6 +759,191 @@ namespace SAwareness
                 return;
 
             Drawing.DrawText(Drawing.Width - 75, 75, System.Drawing.Color.LimeGreen, DateTime.Now.ToString("HH:mm:ss tt"));
+        }
+    }
+
+    internal class ShowPing
+    {
+        public ShowPing()
+        {
+            Drawing.OnDraw += Drawing_OnDraw;
+        }
+
+        ~ShowPing()
+        {
+            Drawing.OnDraw -= Drawing_OnDraw;
+        }
+
+        public bool IsActive()
+        {
+            return Menu.Misc.GetActive() && Menu.ShowPing.GetActive();
+        }
+
+        private void Drawing_OnDraw(EventArgs args)
+        {
+            if (!IsActive())
+                return;
+
+            Drawing.DrawText(Drawing.Width - 75, 90, System.Drawing.Color.LimeGreen, Game.Ping.ToString() + "ms");
+        }
+    }
+
+    internal class PingerName
+    {
+        List<PingInfo> pingInfo = new List<PingInfo>(); 
+
+        public PingerName()
+        {
+            Drawing.OnDraw += Drawing_OnDraw;
+            Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+        }
+
+        ~PingerName()
+        {
+            Drawing.OnDraw -= Drawing_OnDraw;
+            Game.OnGameProcessPacket -= Game_OnGameProcessPacket;
+            pingInfo = null;
+        }
+
+        public bool IsActive()
+        {
+            return Menu.Misc.GetActive() && Menu.PingerName.GetActive();
+        }
+
+        void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        {
+            if (!IsActive())
+                return;
+
+            var reader = new BinaryReader(new MemoryStream(args.PacketData));
+
+            byte packetId = reader.ReadByte();
+            if (packetId == Packet.S2C.Ping.Header)
+            {
+                Packet.S2C.Ping.Struct ping = Packet.S2C.Ping.Decoded(args.PacketData);
+                Obj_AI_Hero hero = ObjectManager.GetUnitByNetworkId<Obj_AI_Hero>(ping.SourceNetworkId);
+                if (hero != null && hero.IsValid)
+                {
+                    pingInfo.Add(new PingInfo(hero.ChampionName, new Vector2(ping.X, ping.Y), Game.Time + 2));
+                }
+            }
+        }
+
+        private void Drawing_OnDraw(EventArgs args)
+        {
+            if (!IsActive())
+                return;
+
+            foreach (var info in pingInfo.ToList())
+            {
+                if (info.Time < Game.Time)
+                {
+                    pingInfo.Remove(info);
+                    continue;
+                }
+                Vector2 screenPos = Drawing.WorldToScreen(new Vector3(info.Pos, NavMesh.GetHeightForPosition(info.Pos.X, info.Pos.Y)));
+                Drawing.DrawText(screenPos.X - 25, screenPos.Y, System.Drawing.Color.DeepSkyBlue, info.Name);
+            }
+        }
+
+        private class PingInfo
+        {
+            public Vector2 Pos;
+            public String Name;
+            public float Time;
+
+            public PingInfo(String name, Vector2 pos, float time)
+            {
+                Name = name;
+                Pos = pos;
+                Time = time;
+            }
+        }
+    }
+
+    internal class AntiVisualScreenStealth
+    {
+        private static int Header = 0xDB;
+
+        public AntiVisualScreenStealth()
+        {
+            bool available = false;
+            foreach (var hero in ObjectManager.Get<Obj_AI_Hero>())
+            {
+                switch (hero.ChampionName)
+                {
+                    case "Akali":
+                        available = true;
+                        break;
+
+                    case "Khazix":
+                        available = true;
+                        break;
+
+                    case "Leblanc":
+                        available = true;
+                        break;
+
+                    case "MonkeyKing":
+                        available = true;
+                        break;
+
+                    case "Nocturne":
+                        available = true;
+                        break;
+
+                    case "Shaco":
+                        available = true;
+                        break;
+
+                    case "Talon":
+                        available = true;
+                        break;
+
+                    case "Teemo":
+                        available = true;
+                        break;
+
+                    case "Twitch":
+                        available = true;
+                        break;
+
+                    case "Vayne":
+                        available = true;
+                        break;
+                }
+                if (available)
+                    break;
+            }
+            if (available)
+                Game.OnGameProcessPacket += Game_OnGameProcessPacket;
+        }
+
+        ~AntiVisualScreenStealth()
+        {
+            Game.OnGameProcessPacket -= Game_OnGameProcessPacket;
+        }
+
+        public bool IsActive()
+        {
+            return Menu.Misc.GetActive() && Menu.AntiVisualScreenStealth.GetActive();
+        }
+
+        void Game_OnGameProcessPacket(GamePacketEventArgs args)
+        {
+            if (!IsActive())
+                return;
+
+            var reader = new BinaryReader(new MemoryStream(args.PacketData));
+
+            byte packetId = reader.ReadByte();
+            if (packetId == Header)
+            {
+                reader.ReadInt32();
+                byte visualStealthActive = reader.ReadByte();
+                if (visualStealthActive == 1)
+                    args.Process = false;
+            }
         }
     }
 }

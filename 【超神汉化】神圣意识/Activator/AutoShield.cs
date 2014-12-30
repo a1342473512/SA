@@ -12,11 +12,11 @@ namespace SAwareness
 
         public AutoShield()
         {
-            if (_shield == null)
-            {
-                Init();
-            }
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            //if (_shield == null)
+            //{
+            //    Init();
+            //}
+            //Game.OnGameUpdate += Game_OnGameUpdate;
         }
 
         ~AutoShield()

@@ -105,6 +105,7 @@
     <Compile Include="Database.cs" />
     <Compile Include="Detector.cs" />
     <Compile Include="Activator\EmbeddedAssembly.cs" />
+    <Compile Include="EloDisplayer.cs" />
     <Compile Include="FlashJuke.cs" />
     <Compile Include="Ganks.cs" />
     <Compile Include="Health.cs" />
@@ -139,6 +140,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -3857,6 +3859,57 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SPELLS\SionW.dds" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\BarBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\GoldCsLvlBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\HealthBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\ItemSlotEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\ManaBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\RecallBar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SkillOrderGui.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SkillPoint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SpellTint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SpellTintGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SpellTintRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SummonerSpellTint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SummonerTint.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\QuestionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\EloGui.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SkillOrderGuiCancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EXT\SkillOrderGuiSave.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

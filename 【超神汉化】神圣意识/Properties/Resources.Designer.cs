@@ -3431,12 +3431,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] BarBackground {
+        internal static System.Drawing.Bitmap BarBackground {
             get {
                 object obj = ResourceManager.GetObject("BarBackground", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -4613,6 +4613,16 @@ namespace SAwareness.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
+        internal static byte[] Evade {
+            get {
+                object obj = ResourceManager.GetObject("Evade", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
         internal static byte[] Evelynn {
             get {
                 object obj = ResourceManager.GetObject("Evelynn", resourceCulture);
@@ -5311,12 +5321,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] GoldCsLvlBar {
+        internal static System.Drawing.Bitmap GoldCsLvlBar {
             get {
                 object obj = ResourceManager.GetObject("GoldCsLvlBar", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -5491,12 +5501,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] HealthBar {
+        internal static System.Drawing.Bitmap HealthBar {
             get {
                 object obj = ResourceManager.GetObject("HealthBar", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -5841,12 +5851,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] ItemSlotEmpty {
+        internal static System.Drawing.Bitmap ItemSlotEmpty {
             get {
                 object obj = ResourceManager.GetObject("ItemSlotEmpty", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -7441,12 +7451,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] ManaBar {
+        internal static System.Drawing.Bitmap ManaBar {
             get {
                 object obj = ResourceManager.GetObject("ManaBar", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -8661,6 +8671,16 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap QuestionMark {
+            get {
+                object obj = ResourceManager.GetObject("QuestionMark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
         internal static byte[] Quinn {
@@ -8781,12 +8801,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] RecallBar {
+        internal static System.Drawing.Bitmap RecallBar {
             get {
                 object obj = ResourceManager.GetObject("RecallBar", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -9741,6 +9761,26 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillOrderGui {
+            get {
+                object obj = ResourceManager.GetObject("SkillOrderGui", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SkillPoint {
+            get {
+                object obj = ResourceManager.GetObject("SkillPoint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
         internal static byte[] slashCast {
@@ -9971,32 +10011,32 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] SpellTint {
+        internal static System.Drawing.Bitmap SpellTint {
             get {
                 object obj = ResourceManager.GetObject("SpellTint", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] SpellTintGreen {
+        internal static System.Drawing.Bitmap SpellTintGreen {
             get {
                 object obj = ResourceManager.GetObject("SpellTintGreen", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] SpellTintRed {
+        internal static System.Drawing.Bitmap SpellTintRed {
             get {
                 object obj = ResourceManager.GetObject("SpellTintRed", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -10141,12 +10181,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] SummonerSpellTint {
+        internal static System.Drawing.Bitmap SummonerSpellTint {
             get {
                 object obj = ResourceManager.GetObject("SummonerSpellTint", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -10161,12 +10201,12 @@ namespace SAwareness.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] SummonerTint {
+        internal static System.Drawing.Bitmap SummonerTint {
             get {
                 object obj = ResourceManager.GetObject("SummonerTint", resourceCulture);
-                return ((byte[])(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

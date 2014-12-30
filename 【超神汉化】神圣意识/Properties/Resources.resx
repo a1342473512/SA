@@ -286,9 +286,6 @@
   <data name="BantamTrap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\BantamTrap.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BarBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\BarBackground.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="BlackShield" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\BlackShield.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -850,9 +847,6 @@
   <data name="Gnar_Passive" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PASSIVE\Gnar_Passive.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GoldCsLvlBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\GoldCsLvlBar.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Gragas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP\Gragas.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -903,9 +897,6 @@
   </data>
   <data name="Headbutt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\Headbutt.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="HealthBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\HealthBar.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Hecarim" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP\Hecarim.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1008,9 +999,6 @@
   </data>
   <data name="Irelia_MM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP_MM\Irelia_MM.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ItemSlotEmpty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\ItemSlotEmpty.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="JackInTheBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\JackInTheBox.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1489,9 +1477,6 @@
   <data name="Malzahar_MM" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP_MM\Malzahar_MM.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ManaBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\ManaBar.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Maokai" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP\Maokai.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1891,9 +1876,6 @@
   <data name="ReapTheWhirlwind" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\ReapTheWhirlwind.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="RecallBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\EXT\RecallBar.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="RemoveScurvy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\RemoveScurvy.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2248,15 +2230,6 @@
   <data name="SpellFlux" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\SpellFlux.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SpellTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUMMONERS\SpellTint.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SpellTintGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUMMONERS\SpellTintGreen.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SpellTintRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUMMONERS\SpellTintRed.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Starcall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SPELLS\Starcall.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2299,14 +2272,8 @@
   <data name="SummonerSmite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SUMMONERS\SummonerSmite.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="SummonerSpellTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUMMONERS\SummonerSpellTint.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="SummonerTeleport" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SUMMONERS\SummonerTeleport.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="SummonerTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUMMONERS\SummonerTint.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Swain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CHAMP\Swain.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3774,5 +3741,50 @@
   </data>
   <data name="_3801" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ITEMS\3801.dds;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Evade" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DLL\Evade.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BarBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\BarBackground.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldCsLvlBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\GoldCsLvlBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HealthBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\HealthBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemSlotEmpty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\ItemSlotEmpty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ManaBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\ManaBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="QuestionMark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\QuestionMark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RecallBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\RecallBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkillOrderGui" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SkillOrderGui.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SkillPoint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SkillPoint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpellTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SpellTint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpellTintGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SpellTintGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SpellTintRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SpellTintRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SummonerSpellTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SummonerSpellTint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SummonerTint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EXT\SummonerTint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

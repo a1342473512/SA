@@ -15,11 +15,11 @@ namespace SAwareness
 
         public AutoQSS()
         {
-            if (_qss == null)
-            {
-                Init();
-            }
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            //if (_qss == null)
+            //{
+            //    Init();
+            //}
+            //Game.OnGameUpdate += Game_OnGameUpdate;
         }
 
         ~AutoQSS()

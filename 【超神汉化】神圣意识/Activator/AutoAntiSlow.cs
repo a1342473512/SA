@@ -14,11 +14,11 @@ namespace SAwareness
 
         public AutoAntiSlow()
         {
-            if (_antiSlow == null)
-            {
-                Init();
-            }
-            Game.OnGameUpdate += Game_OnGameUpdate;
+            //if (_antiSlow == null)
+            //{
+            //    Init();
+            //}
+            //Game.OnGameUpdate += Game_OnGameUpdate;
         }
 
         ~AutoAntiSlow()
